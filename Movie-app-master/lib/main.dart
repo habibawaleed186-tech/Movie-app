@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'modules/Auth_screen/reset_password_view/reset_password.dart';
+import 'package:movie_app/modules/on_boarding_screen/on_boarding_view/on_boarding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: ResetPassword(),
+          home: OnBoarding(),
         );
       },
     );
