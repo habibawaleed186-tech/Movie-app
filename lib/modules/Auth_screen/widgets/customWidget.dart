@@ -1,16 +1,22 @@
 import 'package:flutter/cupertino.dart';
 
+import '../../../core/config/app_color.dart';
+
 class Customwidget extends StatelessWidget{
 
   final String text;
   final Widget? icon;
   final VoidCallback? onPressed;
+  final Color? bgColor;
+  final Color? textColor;
 
   const Customwidget({
     super.key,
     required this.text,
     this.icon,
     this.onPressed,
+    this.bgColor = AppColor.yellow,
+    this.textColor =AppColor.Dark
   });
 
   @override
@@ -21,7 +27,7 @@ class Customwidget extends StatelessWidget{
         width: double.infinity,
         height: 55,
         decoration: BoxDecoration(
-          color: const Color(0xFFFFBB3B),
+          color: bgColor,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(
@@ -29,10 +35,10 @@ class Customwidget extends StatelessWidget{
           children: [
             Text(
               text,
-              style: const TextStyle(
+              style:  TextStyle(
                   fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF282A28)
+                  fontWeight: FontWeight.w400,
+                  color: textColor,
               ),
             ),
             if (icon != null)

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/routes/app_router.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
+import 'package:movie_app/modules/Auth_screen/register_view/register.dart';
+import 'package:movie_app/modules/Home_screen/update_view/update.dart';
 
 import 'modules/Auth_screen/login_view/login.dart';
 
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: Login(),
+
       initialRoute: AppRoutes.loginView,
       onGenerateRoute: AppRouter.onGenerateRoute,
 

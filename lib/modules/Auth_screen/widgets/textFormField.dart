@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/config/app_color.dart';
+
 class Textformfield extends StatelessWidget{
   String hintText;
   Widget? prefixIcon;
@@ -12,6 +14,9 @@ class Textformfield extends StatelessWidget{
     final _textController=TextEditingController();
 
     return TextFormField(
+      style: TextStyle(
+        color: AppColor.white,
+      ),
 
       decoration: InputDecoration(
         hintText: hintText,
