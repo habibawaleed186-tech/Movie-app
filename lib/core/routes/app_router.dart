@@ -18,7 +18,7 @@ abstract class AppRouter {
     switch(settings.name)
     {
       case AppRoutes.Splach:
-        return MaterialPageRoute(builder: (context)=> Splach());
+        return MaterialPageRoute(builder: (context)=> SplashView());
 
       case AppRoutes.onBoarding:
         return MaterialPageRoute(builder: (context) => OnBoarding());

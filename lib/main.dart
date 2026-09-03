@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
 
-      initialRoute: AppRoutes.loginView,
+      initialRoute: AppRoutes.Splach,
       onGenerateRoute: AppRouter.onGenerateRoute,
 
     );
