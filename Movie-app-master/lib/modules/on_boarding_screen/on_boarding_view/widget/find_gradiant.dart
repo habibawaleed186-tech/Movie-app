@@ -13,6 +13,9 @@ class FindGradiant extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        Container(
+          color: AppColor.Dark,
+        ),
         Image.asset(
           AppAssets.moviesPoster,
           fit: BoxFit.cover,
@@ -31,45 +34,53 @@ class FindGradiant extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Find Your Next Favorite Movie Here",
+                        "Find Your Next\n"
+                      " Favorite Movie Here",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: AppColor.white,
-                    fontSize: 24.sp,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(height: 8.h),
                 Text(
-                  "Get access to a huge library of movies to suit all tastes. You will surely like it.",
+                  "Get access to a huge library of movies\n "
+                      "to suit all tastes. You will surely like it.",
                   style: TextStyle(
                     color: AppColor.white,
-                    fontSize: 20.sp,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 SizedBox(height: 16.h),
-                GestureDetector(
-                  onTap: () {
-                    pageController.nextPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 12.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColor.yellow,
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                    child: Text(
-                      "Explore Now",
-                      style: TextStyle(
-                        color: AppColor.Dark,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w600,
+                SizedBox(
+                  width: double.infinity,
+                  height: 50.h,
+                  child: GestureDetector(
+                    onTap: () {
+                      pageController.nextPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 12.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColor.yellow,
+                        borderRadius: BorderRadius.circular(15.r),
+                      ),
+                      child: Text(
+                        "Explore Now",
+                        style: TextStyle(
+                          color: AppColor.Dark,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),

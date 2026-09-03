@@ -13,6 +13,9 @@ class CreateGradiant extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        Container(
+          color: AppColor.Dark,
+        ),
         Image.asset(
           AppAssets.create,
           fit: BoxFit.cover,
@@ -25,7 +28,11 @@ class CreateGradiant extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [AppColor.white, AppColor.purple],
+                colors: [
+                  AppColor.white.withValues(alpha: 0.1),
+                  AppColor.purple.withValues(alpha: 0.35),
+                  AppColor.purple.withValues(alpha: 1),
+                ],
               ),
             ),
           ),
@@ -51,69 +58,87 @@ class CreateGradiant extends StatelessWidget {
                   "Create Watchlists",
                   style: TextStyle(
                     color: AppColor.white,
-                    fontSize: 24.sp,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(height: 8.h),
                 Text(
-                  "Save movies to your watchlist to keep track of what you want to watch next. Enjoy films in various qualities and genres.",
+                  "Save movies to your watchlist to keep\n "
+                      " track of what you want to watch next.\n"
+                      " Enjoy films in various qualities and\n"
+                      " genres.",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: AppColor.white,
-                    fontSize: 20.sp,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 SizedBox(height: 16.h),
-                GestureDetector(
-                  onTap: () {
-                    pageController.nextPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 12.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColor.yellow,
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                    child: Text(
-                      "Next",
-                      style: TextStyle(
-                        color: AppColor.Dark,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w600,
+                SizedBox(
+                  width: double.infinity,
+                  height: 50.h,
+                  child: GestureDetector(
+                    onTap: () {
+                      pageController.nextPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 12.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColor.yellow,
+                        borderRadius: BorderRadius.circular(15.r),
+                      ),
+                      child: Text(
+                        "Next",
+                        style: TextStyle(
+                          color: AppColor.Dark,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
                 ),
                 SizedBox(height: 16.h),
-                GestureDetector(
-                  onTap: () {
-                    pageController.previousPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 12.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColor.Dark,
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                    child: Text(
-                      "Back",
-                      style: TextStyle(
-                        color: AppColor.yellow,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w600,
+                SizedBox(
+                  width: double.infinity,
+                  height: 50.h,
+                  child: GestureDetector(
+                    onTap: () {
+                      pageController.previousPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 12.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColor.Dark,
+                        borderRadius: BorderRadius.circular(15.r),
+                        border: Border.all(
+                          color: AppColor.yellow,
+                          width: 2.w,
+                        ),
+                      ),
+                      child: Text(
+                        "Back",
+                        style: TextStyle(
+                          color: AppColor.yellow,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),

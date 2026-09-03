@@ -84,5 +84,4 @@ class ResetPassword extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -13,6 +13,9 @@ class ExploreGradiant extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        Container(
+          color: AppColor.Dark,
+        ),
         Image.asset(
           AppAssets.explore,
           fit: BoxFit.cover,
@@ -25,7 +28,11 @@ class ExploreGradiant extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [AppColor.white, AppColor.orange],
+                colors: [
+                  AppColor.white.withValues(alpha: 0.1),
+                  AppColor.orange.withValues(alpha: 0.35),
+                  AppColor.orange.withValues(alpha: 1),
+                ],
               ),
             ),
           ),
@@ -51,69 +58,86 @@ class ExploreGradiant extends StatelessWidget {
                   "Explore All Genres",
                   style: TextStyle(
                     color: AppColor.white,
-                    fontSize: 24.sp,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(height: 8.h),
                 Text(
-                  "Discover movies from every genre, in all available qualities. Find something new and exciting to watch every day.",
+                  "Discover movies from every genre, in all\n"
+                      " available qualities. Find something new\n"
+                      " and exciting to watch every day.",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: AppColor.white,
-                    fontSize: 20.sp,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 SizedBox(height: 16.h),
-                GestureDetector(
-                  onTap: () {
-                    pageController.nextPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 12.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColor.yellow,
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                    child: Text(
-                      "Next",
-                      style: TextStyle(
-                        color: AppColor.Dark,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w600,
+                SizedBox(
+                  width: double.infinity,
+                  height: 50.h,
+                  child: GestureDetector(
+                    onTap: () {
+                      pageController.nextPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 12.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColor.yellow,
+                        borderRadius: BorderRadius.circular(15.r),
+                      ),
+                      child: Text(
+                        "Next",
+                        style: TextStyle(
+                          color: AppColor.Dark,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
                 ),
                 SizedBox(height: 16.h),
-                GestureDetector(
-                  onTap: () {
-                    pageController.previousPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 12.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColor.Dark,
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                    child: Text(
-                      "Back",
-                      style: TextStyle(
-                        color: AppColor.yellow,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w600,
+                SizedBox(
+                  width: double.infinity,
+                  height: 50.h,
+                  child: GestureDetector(
+                    onTap: () {
+                      pageController.previousPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 12.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColor.Dark,
+                        borderRadius: BorderRadius.circular(15.r),
+                        border: Border.all(
+                          color: AppColor.yellow,
+                          width: 2.w,
+                        ),
+                      ),
+                      child: Text(
+                        "Back",
+                        style: TextStyle(
+                          color: AppColor.yellow,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
