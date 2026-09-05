@@ -32,12 +32,17 @@ class Login extends StatelessWidget {
               SizedBox(height: 10),
               Align(
                 alignment: Alignment.centerRight,
-                child: Text(
-                  'Forget Password ?',
-                  style: TextStyle(
-                    color: Color(0xFFFFBB3B),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context, AppRoutes.forgetPassword);
+                  },
+                  child: Text(
+                    'Forget Password ?',
+                    style: TextStyle(
+                      color: Color(0xFFFFBB3B),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),
