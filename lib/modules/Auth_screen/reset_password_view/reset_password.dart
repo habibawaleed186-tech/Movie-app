@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/modules/Auth_screen/widgets/customWidget.dart';
 
 import '../../../core/assets/app_assets.dart';
 import '../../../core/config/app_color.dart';
+import '../../../core/routes/app_routes.dart';
 
 class ResetPassword extends StatelessWidget {
   ResetPassword({super.key});
@@ -61,20 +63,14 @@ class ResetPassword extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 24.h),
-                  TextField(
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: AppColor.white, fontSize: 16.sp),
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: AppColor.yellow,
-                      hintText: "Verify Email",
-                      helperStyle: TextStyle(
-                          color: AppColor.Dark, fontSize: 20.sp),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.r),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
+
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, AppRoutes.updateProfile);
+                    },
+                    child: Customwidget(
+                      text: "Reset Password",
+                    )
                   ),
                 ],
               ),
