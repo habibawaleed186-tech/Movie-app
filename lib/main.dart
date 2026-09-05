@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/routes/app_router.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:movie_app/modules/Auth_screen/register_view/register.dart';
@@ -16,13 +17,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
+    return ScreenUtilInit(
+      designSize: const Size(430, 932),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          initialRoute: AppRoutes.Splach,
+          onGenerateRoute: AppRouter.onGenerateRoute,
 
-      initialRoute: AppRoutes.loginView,
-      onGenerateRoute: AppRouter.onGenerateRoute,
-
+        );
+      }
     );
   }
 }

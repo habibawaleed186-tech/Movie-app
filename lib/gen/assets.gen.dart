@@ -18,7 +18,6 @@ class $AssetsIconsGen {
   String get languageSwitch => 'assets/icons/Language Switch.svg';
 
   /// List of all assets
-  List<String> get values => [languageSwitch];
 }
 
 class $AssetsImagesGen {
