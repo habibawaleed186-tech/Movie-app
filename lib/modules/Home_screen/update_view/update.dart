@@ -105,12 +105,17 @@ class _UpdateState extends State<Update> {
                     onTap: ()=>Navigator.pushReplacementNamed(context,AppRoutes.forgetPassword),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Reset Password",style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: "Roboto",
-                        color: AppColor.white,
-                      ),),
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.pushNamed(context, AppRoutes.forgetPassword);
+                        },
+                        child: Text("Reset Password",style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: "Roboto",
+                          color: AppColor.white,
+                        ),),
+                      ),
                     ),
                   ),
 
@@ -124,9 +129,6 @@ class _UpdateState extends State<Update> {
                   Customwidget(
                     text: "Update Data",
                   )
-
-
-
 
                 ],
 
