@@ -37,6 +37,7 @@ dependencies:
   flutter_svg: ^2.3.0
   modal_bottom_sheet: ^3.0.0
   flutter_screenutil: ^5.9.3
+  dio: ^5.11.1
 
 dev_dependencies:
   flutter_test:
