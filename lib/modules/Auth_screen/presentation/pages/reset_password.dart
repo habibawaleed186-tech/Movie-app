@@ -1,11 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app/modules/Auth_screen/widgets/customWidget.dart';
 
-import '../../../core/assets/app_assets.dart';
-import '../../../core/config/app_color.dart';
-import '../../../core/routes/app_routes.dart';
+import '../../../../core/assets/app_assets.dart';
+import '../../../../core/config/app_color.dart';
+import '../../../../core/routes/app_routes.dart';
+import '../widgets/custonWidget.dart';
+
 
 class ResetPassword extends StatelessWidget {
   ResetPassword({super.key});
@@ -65,12 +66,12 @@ class ResetPassword extends StatelessWidget {
                   SizedBox(height: 24.h),
 
                   GestureDetector(
-                    onTap: (){
-                      Navigator.pushNamed(context, AppRoutes.updateProfile);
-                    },
-                    child: Customwidget(
-                      text: "Reset Password",
-                    )
+                      onTap: (){
+                        Navigator.pushNamed(context, AppRoutes.updateProfile);
+                      },
+                      child: Customwidget(
+                        text: "Reset Password",
+                      )
                   ),
                 ],
               ),
