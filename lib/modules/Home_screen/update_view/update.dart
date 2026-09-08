@@ -5,8 +5,8 @@ import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:movie_app/modules/Home_screen/update_view/widgets/bottom_sheet.dart';
 
 import '../../../gen/assets.gen.dart';
-import '../../Auth_screen/widgets/customWidget.dart';
-import '../../Auth_screen/widgets/textFormField.dart';
+import '../../Auth_screen/presentation/widgets/custonWidget.dart';
+import '../../Auth_screen/presentation/widgets/textFormField.dart';
 
 
 class Update extends StatefulWidget {
