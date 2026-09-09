@@ -17,17 +17,7 @@ class $AssetsIconsGen {
   /// File path: assets/icons/Language Switch.svg
   String get languageSwitch => 'assets/icons/Language Switch.svg';
 
-  /// File path: assets/icons/arrow_back.svg
-  String get arrowBack => 'assets/icons/arrow_back.svg';
-
-  /// File path: assets/icons/phone.svg
-  String get phone => 'assets/icons/phone.svg';
-
-  /// File path: assets/icons/user.svg
-  String get user => 'assets/icons/user.svg';
-
   /// List of all assets
-  List<String> get values => [languageSwitch, arrowBack, phone, user];
 }
 
 class $AssetsImagesGen {
@@ -61,16 +51,9 @@ class $AssetsImagesGen {
   AssetGenImage get gamer17 =>
       const AssetGenImage('assets/images/gamer (1) (7).png');
 
-  /// File path: assets/images/gamer (1)(8).png
-  AssetGenImage get gamer18 =>
-      const AssetGenImage('assets/images/gamer (1)(8).png');
-
   /// File path: assets/images/gamer (1).png
   AssetGenImage get gamer1 =>
       const AssetGenImage('assets/images/gamer (1).png');
-
-  /// File path: assets/images/logo.png
-  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/primary2.png
   AssetGenImage get primary2 =>
@@ -85,9 +68,7 @@ class $AssetsImagesGen {
     gamer15,
     gamer16,
     gamer17,
-    gamer18,
     gamer1,
-    logo,
     primary2,
   ];
 }
