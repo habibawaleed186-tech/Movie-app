@@ -39,8 +39,13 @@ class RemoteAuthDataSource implements AuthDataSourceInterface {
 await firestore.collection('users').doc(uId).set(userModel.toJson());
 return userModel;
 
-
   }
+
+  @override
+  Future<void> resetPassword({required String email}) async {
+    await firebaseAuth.sendPasswordResetEmail(email: email);
+  }
+
 
   @override
   Future<UserModel> signInWithGoogle() {

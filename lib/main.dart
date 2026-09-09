@@ -13,6 +13,7 @@ import 'modules/Auth_screen/data/data_source/remote_auth_data_source.dart';
 import 'modules/Auth_screen/data/repositories_imp/auth_repositories_imp.dart';
 import 'modules/Auth_screen/domain/use_cases/login_use_case.dart';
 import 'modules/Auth_screen/domain/use_cases/register_use_case.dart';
+import 'modules/Auth_screen/domain/use_cases/reset_password_use_case.dart';
 import 'modules/Auth_screen/presentation/manager/auth_bloc.dart';
 
 void main() async {
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
             return AuthBloc(
               loginUseCase: LoginUseCase(repository),
               registerUseCase: RegisterUseCase(authRepositories: repository),
+              resetPasswordUseCase: ResetPasswordUseCase(repositories: repository),
             );
           },
           child: MaterialApp(
