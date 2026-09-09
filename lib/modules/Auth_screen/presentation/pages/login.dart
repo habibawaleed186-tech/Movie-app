@@ -177,7 +177,11 @@ class _LoginScreenState extends State<Login> {
                     ),
          
                     const SizedBox(height: 25),
-                    Customwidget(text: 'Google'),
+                    InkWell(
+                        onTap: (){
+                          BlocProvider.of<AuthBloc>(context).add(SignInWithGoogleEvent());
+                        },
+                        child: Customwidget(text: 'Sign In With Google')),
                     const SizedBox(height: 20),
                     SvgPicture.asset('assets/icons/Language Switch.svg'),
                   ],

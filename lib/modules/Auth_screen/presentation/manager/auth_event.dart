@@ -40,4 +40,10 @@ final class RegisterEvent extends AuthEvent {
 
   @override
   List<Object?> get props => [name, email, password, phone, avatarIndex];
+
+
+
+
 }
+
+final class SignInWithGoogleEvent extends AuthEvent {}
