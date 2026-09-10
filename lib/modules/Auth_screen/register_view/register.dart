@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:movie_app/modules/Auth_screen/widgets/customWidget.dart';
 
 import '../widgets/avatar.dart';
@@ -71,7 +72,16 @@ class Register extends StatelessWidget {
                 hintText: 'Phone Number',
                 suffixIcon: Icon(Icons.phone,color: Colors.white),),
               const SizedBox(height: 20),
-              Customwidget(text: 'Google',),
+              Customwidget(
+                text: 'Register',
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    AppRoutes.layout,
+                    (route) => false,
+                  );
+                },
+              ),
               const SizedBox(height: 10),
 
               Row(

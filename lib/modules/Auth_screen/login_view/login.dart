@@ -47,7 +47,16 @@ class Login extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 40),
-              Customwidget(text: 'Login',),
+              Customwidget(
+                text: 'Login',
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    AppRoutes.layout,
+                    (route) => false,
+                  );
+                },
+              ),
               SizedBox(height: 20),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
