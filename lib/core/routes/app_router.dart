@@ -5,7 +5,7 @@ import 'package:movie_app/modules/Auth_screen/login_view/login.dart';
 import 'package:movie_app/modules/Auth_screen/register_view/register.dart';
 import 'package:movie_app/modules/Home_screen/update_view/update.dart';
 import 'package:movie_app/modules/Splach_screen/splach.dart';
-import 'package:movie_app/modules/layout/layout_screen.dart';
+import 'package:movie_app/modules/layout/home/presentation/pages/layout_screen.dart';
 import 'package:movie_app/modules/on_boarding_screen/on_boarding_view/on_boarding.dart';
 
 import '../../modules/Auth_screen/reset_password_view/reset_password.dart';

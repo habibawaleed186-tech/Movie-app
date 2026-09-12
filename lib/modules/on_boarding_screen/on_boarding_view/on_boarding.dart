@@ -26,23 +26,25 @@ class _OnBoardingState extends State<OnBoarding> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.Dark,
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (index) {
-          setState(() {
-            _currentindex = index;
-          });
-        },
-        children: [
-          FindGradiant(pageController: _pageController),
-          DiscoverGradiant(pageController: _pageController),
-          ExploreGradiant(pageController: _pageController),
-          CreateGradiant(pageController: _pageController),
-          RateGradiant(pageController: _pageController),
-          StartGradiant(pageController: _pageController),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColor.Dark,
+        body: PageView(
+          controller: _pageController,
+          onPageChanged: (index) {
+            setState(() {
+              _currentindex = index;
+            });
+          },
+          children: [
+            FindGradiant(pageController: _pageController),
+            DiscoverGradiant(pageController: _pageController),
+            ExploreGradiant(pageController: _pageController),
+            CreateGradiant(pageController: _pageController),
+            RateGradiant(pageController: _pageController),
+            StartGradiant(pageController: _pageController),
+          ],
+        ),
       ),
     );
   }

@@ -23,7 +23,8 @@ abstract class AppAssets {
   static const String index11 = "assets/images/index 11.jpg";
   static const String index12 = "assets/images/index 12.jpg";
   static const String index13 = "assets/images/index 13.jpg";
-  static const String HeaderText = "assets/images/Available Now.png";
+  static const String poster = "assets/images/Movies Posters.png";
+  static const String headerText = "assets/images/Available Now.png";
   static const String watchNow = "assets/images/97ab5fb2e4e76c640b21b6db578a86b1e22877ec.png";
 
   

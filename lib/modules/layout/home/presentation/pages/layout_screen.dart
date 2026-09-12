@@ -1,7 +1,7 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:movie_app/core/assets/app_assets.dart';
 import 'package:movie_app/core/config/app_color.dart';
-import 'package:movie_app/modules/layout/home_screen_layout.dart';
+import 'package:movie_app/modules/layout/home/presentation/pages/home_screen_layout.dart';
 
 class LayoutScreen extends StatefulWidget {
   static const String routeName = '/layout';
