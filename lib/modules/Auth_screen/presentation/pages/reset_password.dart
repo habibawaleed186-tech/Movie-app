@@ -1,16 +1,19 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/assets/app_assets.dart';
 import '../../../../core/config/app_color.dart';
 import '../../../../core/routes/app_routes.dart';
+import '../manager/auth_bloc.dart';
+import '../manager/auth_event.dart';
 import '../widgets/custonWidget.dart';
 
 
 class ResetPassword extends StatelessWidget {
   ResetPassword({super.key});
-
+final TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +50,7 @@ class ResetPassword extends StatelessWidget {
               child: Column(
                 children: [
                   TextField(
+                    controller: emailController,
                     style: TextStyle(color: AppColor.white, fontSize: 16.sp),
                     decoration: InputDecoration(
                       filled: true,
@@ -67,10 +71,11 @@ class ResetPassword extends StatelessWidget {
 
                   GestureDetector(
                       onTap: (){
-                        Navigator.pushNamed(context, AppRoutes.updateProfile);
+                        BlocProvider.of<AuthBloc>(context).add(
+                            ResetPasswordEvent(email: emailController.text));
                       },
                       child: Customwidget(
-                        text: "Reset Password",
+                        text: "Verify Email",
                       )
                   ),
                 ],

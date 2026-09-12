@@ -47,3 +47,10 @@ final class RegisterEvent extends AuthEvent {
 }
 
 final class SignInWithGoogleEvent extends AuthEvent {}
+
+final class ResetPasswordEvent extends AuthEvent {
+  final String email;
+  const ResetPasswordEvent({required this.email});
+  @override
+  List<Object?> get props => [email];
+}

@@ -8,6 +8,6 @@ abstract class AuthRepositories {
 
   Future<UserEntity> signInWithGoogle();
 
-
+  Future<void> resetPassword({required String email});
 
 }
