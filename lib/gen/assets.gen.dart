@@ -17,11 +17,39 @@ class $AssetsIconsGen {
   /// File path: assets/icons/Language Switch.svg
   String get languageSwitch => 'assets/icons/Language Switch.svg';
 
+  /// File path: assets/icons/arrow_back.svg
+  String get arrowBack => 'assets/icons/arrow_back.svg';
+
+  /// File path: assets/icons/phone.svg
+  String get phone => 'assets/icons/phone.svg';
+
+  /// File path: assets/icons/user.svg
+  String get user => 'assets/icons/user.svg';
+
   /// List of all assets
+  List<String> get values => [languageSwitch, arrowBack, phone, user];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/Forgot password.png
+  AssetGenImage get forgotPassword =>
+      const AssetGenImage('assets/images/Forgot password.png');
+
+  /// File path: assets/images/Movies Posters.png
+  AssetGenImage get moviesPosters =>
+      const AssetGenImage('assets/images/Movies Posters.png');
+
+  /// File path: assets/images/create.png
+  AssetGenImage get create => const AssetGenImage('assets/images/create.png');
+
+  /// File path: assets/images/discover.png
+  AssetGenImage get discover =>
+      const AssetGenImage('assets/images/discover.png');
+
+  /// File path: assets/images/explore.png
+  AssetGenImage get explore => const AssetGenImage('assets/images/explore.png');
 
   /// File path: assets/images/gamer (1) (1).png
   AssetGenImage get gamer11 =>
@@ -51,16 +79,34 @@ class $AssetsImagesGen {
   AssetGenImage get gamer17 =>
       const AssetGenImage('assets/images/gamer (1) (7).png');
 
+  /// File path: assets/images/gamer (1)(8).png
+  AssetGenImage get gamer18 =>
+      const AssetGenImage('assets/images/gamer (1)(8).png');
+
   /// File path: assets/images/gamer (1).png
   AssetGenImage get gamer1 =>
       const AssetGenImage('assets/images/gamer (1).png');
+
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/primary2.png
   AssetGenImage get primary2 =>
       const AssetGenImage('assets/images/primary2.png');
 
+  /// File path: assets/images/rate.png
+  AssetGenImage get rate => const AssetGenImage('assets/images/rate.png');
+
+  /// File path: assets/images/start.png
+  AssetGenImage get start => const AssetGenImage('assets/images/start.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
+    forgotPassword,
+    moviesPosters,
+    create,
+    discover,
+    explore,
     gamer11,
     gamer12,
     gamer13,
@@ -68,8 +114,12 @@ class $AssetsImagesGen {
     gamer15,
     gamer16,
     gamer17,
+    gamer18,
     gamer1,
+    logo,
     primary2,
+    rate,
+    start,
   ];
 }
 

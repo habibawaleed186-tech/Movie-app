@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/config/app_color.dart';
 
-import '../../../../gen/assets.gen.dart';
+import '../../../../../../gen/assets.gen.dart';
 
 class AvatarCard extends StatelessWidget {
   final AssetGenImage imagePath;

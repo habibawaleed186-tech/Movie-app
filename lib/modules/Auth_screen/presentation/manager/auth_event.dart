@@ -41,3 +41,10 @@ final class RegisterEvent extends AuthEvent {
   @override
   List<Object?> get props => [name, email, password, phone, avatarIndex];
 }
+
+final class ResetPasswordEvent extends AuthEvent {
+  final String email;
+  const ResetPasswordEvent({required this.email});
+  @override
+  List<Object?> get props => [email];
+}

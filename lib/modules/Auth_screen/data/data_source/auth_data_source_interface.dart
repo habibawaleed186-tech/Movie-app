@@ -9,4 +9,6 @@ Future<UserModel> register({required String name,required String email,required 
 
 Future<UserModel> signInWithGoogle();
 
+  Future<void> resetPassword({required String email}) ;
+
 }
