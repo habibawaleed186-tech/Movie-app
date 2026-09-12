@@ -60,13 +60,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
           selectedIndex = index;
         });
       },
-      child: Container(
-        width: 52,
-        height: 52,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14),
-          color: isSelected ? AppColor.yellow.withValues(alpha: 0.12) : Colors.transparent,
-        ),
         child: Center(
           child: Image.asset(
             iconPath,
@@ -75,7 +68,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
             color: isSelected ? AppColor.yellow : AppColor.white,
           ),
         ),
-      ),
     );
   }
 }
