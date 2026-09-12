@@ -38,11 +38,12 @@ dependencies:
   modal_bottom_sheet: ^3.0.0
   flutter_screenutil: ^5.9.3
   dio: ^5.11.1
-  firebase_auth: ^6.6.1
-  cloud_firestore: ^6.9.0
+  firebase_auth: ^5.1.0
+  cloud_firestore: ^5.4.0
   equatable: ^2.1.0
   flutter_bloc: ^9.1.1
-  firebase_core: ^4.14.0
+  firebase_core: ^3.6.0
+  shared_preferences: ^2.5.5
 
 dev_dependencies:
   flutter_test:
