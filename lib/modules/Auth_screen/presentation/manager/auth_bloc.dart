@@ -12,12 +12,9 @@ class AuthBloc extends Bloc<AuthEvent,AuthState> {
   final LoginUseCase loginUseCase;
   final RegisterUseCase registerUseCase;
   final SignInWithGoogleUseCase signInWithGoogleUseCase;
-  AuthBloc({required this.loginUseCase, required this.registerUseCase, required this.signInWithGoogleUseCase})
   final ResetPasswordUseCase resetPasswordUseCase;
+  AuthBloc({required this.loginUseCase, required this.registerUseCase,   required this.resetPasswordUseCase,required this.signInWithGoogleUseCase})
 
-  AuthBloc({required this.loginUseCase,
-    required this.registerUseCase,
-    required this.resetPasswordUseCase})
 
       : super(AuthInitial()) {
     on<LoginEvent>(_onLogin);

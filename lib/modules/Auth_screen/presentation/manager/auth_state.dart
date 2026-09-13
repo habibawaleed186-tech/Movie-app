@@ -32,14 +32,6 @@ final class AuthSuccess extends AuthState {
   List<Object?> get props => [errorMessage];
   }
 
-final class AuthSuccess extends AuthState {
-  final UserEntity user;
-
-  const AuthSuccess(this.user);
-
-  @override
-  List<Object?> get props => [user];
-}
 
 final class ResetPasswordSuccess extends AuthState {
   final String message;
