@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/assets/app_assets.dart';
 import '../../../../core/config/app_color.dart';
-import '../../../Auth_screen/login_view/login.dart';
+import '../../../Auth_screen/presentation/pages/login.dart';
+
 
 class StartGradiant extends StatelessWidget {
   const StartGradiant({super.key, required this.pageController});

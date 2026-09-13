@@ -17,38 +17,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/Language Switch.svg
   String get languageSwitch => 'assets/icons/Language Switch.svg';
 
-  /// File path: assets/icons/Profile.png
-  AssetGenImage get profile => const AssetGenImage('assets/icons/Profile.png');
-
   /// File path: assets/icons/arrow_back.svg
   String get arrowBack => 'assets/icons/arrow_back.svg';
 
-  /// File path: assets/icons/browse.png
-  AssetGenImage get browse => const AssetGenImage('assets/icons/browse.png');
-
-  /// File path: assets/icons/home.png
-  AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
-
   /// File path: assets/icons/phone.svg
   String get phone => 'assets/icons/phone.svg';
-
-  /// File path: assets/icons/search.png
-  AssetGenImage get search => const AssetGenImage('assets/icons/search.png');
 
   /// File path: assets/icons/user.svg
   String get user => 'assets/icons/user.svg';
 
   /// List of all assets
-  List<dynamic> get values => [
-    languageSwitch,
-    profile,
-    arrowBack,
-    browse,
-    home,
-    phone,
-    search,
-    user,
-  ];
+  List<String> get values => [languageSwitch, arrowBack, phone, user];
 }
 
 class $AssetsImagesGen {
@@ -61,6 +40,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/Movies Posters.png
   AssetGenImage get moviesPosters =>
       const AssetGenImage('assets/images/Movies Posters.png');
+
+  /// File path: assets/images/create.png
+  AssetGenImage get create => const AssetGenImage('assets/images/create.png');
 
   /// File path: assets/images/discover.png
   AssetGenImage get discover =>
@@ -105,49 +87,6 @@ class $AssetsImagesGen {
   AssetGenImage get gamer1 =>
       const AssetGenImage('assets/images/gamer (1).png');
 
-  /// File path: assets/images/index 1.jpg
-  AssetGenImage get index1 => const AssetGenImage('assets/images/index 1.jpg');
-
-  /// File path: assets/images/index 10.jpg
-  AssetGenImage get index10 =>
-      const AssetGenImage('assets/images/index 10.jpg');
-
-  /// File path: assets/images/index 11.jpg
-  AssetGenImage get index11 =>
-      const AssetGenImage('assets/images/index 11.jpg');
-
-  /// File path: assets/images/index 12.png
-  AssetGenImage get index12 =>
-      const AssetGenImage('assets/images/index 12.png');
-
-  /// File path: assets/images/index 13.png
-  AssetGenImage get index13 =>
-      const AssetGenImage('assets/images/index 13.png');
-
-  /// File path: assets/images/index 2.jpg
-  AssetGenImage get index2 => const AssetGenImage('assets/images/index 2.jpg');
-
-  /// File path: assets/images/index 3.jpg
-  AssetGenImage get index3 => const AssetGenImage('assets/images/index 3.jpg');
-
-  /// File path: assets/images/index 4.jpg
-  AssetGenImage get index4 => const AssetGenImage('assets/images/index 4.jpg');
-
-  /// File path: assets/images/index 5.jpg
-  AssetGenImage get index5 => const AssetGenImage('assets/images/index 5.jpg');
-
-  /// File path: assets/images/index 6.jpg
-  AssetGenImage get index6 => const AssetGenImage('assets/images/index 6.jpg');
-
-  /// File path: assets/images/index 7.jpg
-  AssetGenImage get index7 => const AssetGenImage('assets/images/index 7.jpg');
-
-  /// File path: assets/images/index 8.jpg
-  AssetGenImage get index8 => const AssetGenImage('assets/images/index 8.jpg');
-
-  /// File path: assets/images/index 9.jpg
-  AssetGenImage get index9 => const AssetGenImage('assets/images/index 9.jpg');
-
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -165,6 +104,7 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
     forgotPassword,
     moviesPosters,
+    create,
     discover,
     explore,
     gamer11,
@@ -176,19 +116,6 @@ class $AssetsImagesGen {
     gamer17,
     gamer18,
     gamer1,
-    index1,
-    index10,
-    index11,
-    index12,
-    index13,
-    index2,
-    index3,
-    index4,
-    index5,
-    index6,
-    index7,
-    index8,
-    index9,
     logo,
     primary2,
     rate,
@@ -196,9 +123,7 @@ class $AssetsImagesGen {
   ];
 }
 
-class Assets {
-  const Assets._();
-
+abstract final class Assets {
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
