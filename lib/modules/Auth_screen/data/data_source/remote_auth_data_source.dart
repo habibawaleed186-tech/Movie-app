@@ -79,7 +79,7 @@ return userModel;
         email: user.email ?? '',
         uId: uId,
         avatarIndex: 0,
-        name: user.displayName ?? 'Google user',
+        name: user.displayName ?? 'Google user', phone: '',
       );
       await firestore.collection('users').doc(uId).set(userModel.toJson());
       return userModel;

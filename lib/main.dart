@@ -17,12 +17,13 @@ import 'modules/Auth_screen/domain/use_cases/register_use_case.dart';
 import 'modules/Auth_screen/domain/use_cases/sign_in_with_google_use_case.dart';
 import 'modules/Auth_screen/domain/use_cases/reset_password_use_case.dart';
 import 'modules/Auth_screen/presentation/manager/auth_bloc.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  if (Firebase.apps.isEmpty) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
             return AuthBloc(
               loginUseCase: LoginUseCase(repository),
               registerUseCase: RegisterUseCase(authRepositories: repository),
-              resetPasswordUseCase: ResetPasswordUseCase(repositories: repository),
+              resetPasswordUseCase: ResetPasswordUseCase(repositories: repository), signInWithGoogleUseCase: SignInWithGoogleUseCase(authRepositories: repository),
             );
           },
           child: MaterialApp(
