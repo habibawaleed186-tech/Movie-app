@@ -6,6 +6,7 @@ import 'package:movie_app/modules/on_boarding_screen/on_boarding_view/widget/exp
 import 'package:movie_app/modules/on_boarding_screen/on_boarding_view/widget/find_gradiant.dart';
 import 'package:movie_app/modules/on_boarding_screen/on_boarding_view/widget/rate_gradiant.dart';
 import 'package:movie_app/modules/on_boarding_screen/on_boarding_view/widget/start_gradiant.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoarding extends StatefulWidget {
   OnBoarding({super.key});
@@ -15,6 +16,13 @@ class OnBoarding extends StatefulWidget {
 }
 
 class _OnBoardingState extends State<OnBoarding> {
+  Future<void> finishOnBoarding() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isOnBoardingShown', true);
+    if (!mounted) return;
+    Navigator.pushReplacementNamed(context, '/login');
+  }
+
   final PageController _pageController = PageController();
   int _currentindex = 0;
 

@@ -4,21 +4,22 @@ import 'package:movie_app/modules/Auth_screen/presentation/manager/auth_state.da
 
 import '../../domain/use_cases/login_use_case.dart';
 import '../../domain/use_cases/register_use_case.dart';
+import '../../domain/use_cases/sign_in_with_google_use_case.dart';
 import '../../domain/use_cases/reset_password_use_case.dart';
 
 class AuthBloc extends Bloc<AuthEvent,AuthState> {
 
   final LoginUseCase loginUseCase;
   final RegisterUseCase registerUseCase;
+  final SignInWithGoogleUseCase signInWithGoogleUseCase;
   final ResetPasswordUseCase resetPasswordUseCase;
+  AuthBloc({required this.loginUseCase, required this.registerUseCase,   required this.resetPasswordUseCase,required this.signInWithGoogleUseCase})
 
-  AuthBloc({required this.loginUseCase,
-    required this.registerUseCase,
-    required this.resetPasswordUseCase})
 
       : super(AuthInitial()) {
     on<LoginEvent>(_onLogin);
     on<RegisterEvent>(_onRegister);
+    on<SignInWithGoogleEvent> (_onSignInWithGoogle);
     on<ResetPasswordEvent>(_onResetPassword);
   }
 
@@ -55,6 +56,17 @@ class AuthBloc extends Bloc<AuthEvent,AuthState> {
     try {
       await resetPasswordUseCase(email: event.email);
       emit(ResetPasswordSuccess('Password reset email sent'));
+    } catch (e) {
+      emit(AuthError(e.toString()));
+    }
+  }
+
+  Future<void> _onSignInWithGoogle(SignInWithGoogleEvent event,Emitter<AuthState> emit)async
+  {
+    emit(AuthLoading());
+    try {
+      final user = await signInWithGoogleUseCase();
+      emit(AuthSuccess(user));
     } catch (e) {
       emit(AuthError(e.toString()));
     }
