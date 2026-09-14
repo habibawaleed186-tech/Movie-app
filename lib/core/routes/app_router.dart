@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/modules/Splach_screen/splach.dart';
+import 'package:movie_app/modules/layout/home/presentation/pages/layout_screen.dart';
 import 'package:movie_app/modules/on_boarding_screen/on_boarding_view/on_boarding.dart';
 import '../../modules/Auth_screen/presentation/pages/login.dart';
 import '../../modules/Auth_screen/presentation/pages/register.dart';
@@ -29,6 +30,9 @@ abstract class AppRouter {
 
       case AppRoutes.registerView:
         return MaterialPageRoute(builder: (context) => Register());
+
+      case AppRoutes.layout:
+        return MaterialPageRoute(builder: (context) => const LayoutScreen());
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (context) => ResetPassword());
