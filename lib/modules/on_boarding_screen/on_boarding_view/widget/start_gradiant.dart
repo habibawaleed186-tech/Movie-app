@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/assets/app_assets.dart';
 import '../../../../core/config/app_color.dart';
-import '../../../Auth_screen/presentation/pages/login.dart';
+import '../../../auth_screen/presentation/pages/login.dart';
 
 
 class StartGradiant extends StatelessWidget {

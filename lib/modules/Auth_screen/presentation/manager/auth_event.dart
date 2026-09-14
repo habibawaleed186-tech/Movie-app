@@ -1,6 +1,5 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:movie_app/modules/Auth_screen/domain/entities/user_entity.dart';
 
 sealed class AuthEvent extends Equatable {
   const AuthEvent();

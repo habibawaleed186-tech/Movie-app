@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
-import '../../domain/entities/user_entity.dart';
 import '../manager/auth_bloc.dart';
 import '../manager/auth_event.dart';
 import '../manager/auth_state.dart';
@@ -52,7 +51,7 @@ class _RegisterScreenState extends State<Register> {
               backgroundColor: Colors.green,
             ),
           );
-          Navigator.pushReplacementNamed(context, AppRoutes.loginView);
+          Navigator.pushReplacementNamed(context, AppRoutes.layout);
         } else if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -170,9 +169,6 @@ class _RegisterScreenState extends State<Register> {
                       text: 'Create Account',
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          print('Avatar: $_selectedAvatarIndex');
-                          print('Name: ${_nameController.text}');
-                          print('Email: ${_emailController.text}');
                           context.read<AuthBloc>().add(
                             RegisterEvent(
                               name: _nameController.text.trim(),

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/modules/Auth_screen/presentation/manager/auth_event.dart';
-import 'package:movie_app/modules/Auth_screen/presentation/manager/auth_state.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_event.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_state.dart';
 
 import '../../domain/use_cases/login_use_case.dart';
 import '../../domain/use_cases/register_use_case.dart';

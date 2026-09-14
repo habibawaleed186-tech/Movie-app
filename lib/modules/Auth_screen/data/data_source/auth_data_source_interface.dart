@@ -1,5 +1,5 @@
 
-import 'package:movie_app/modules/Auth_screen/data/models/user_model.dart';
+import 'package:movie_app/modules/auth_screen/data/models/user_model.dart';
 
 abstract class AuthDataSourceInterface {
 

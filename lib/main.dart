@@ -9,14 +9,14 @@ import 'package:movie_app/core/routes/app_router.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'modules/Auth_screen/data/data_source/auth_data_source_interface.dart';
-import 'modules/Auth_screen/data/data_source/remote_auth_data_source.dart';
-import 'modules/Auth_screen/data/repositories_imp/auth_repositories_imp.dart';
-import 'modules/Auth_screen/domain/use_cases/login_use_case.dart';
-import 'modules/Auth_screen/domain/use_cases/register_use_case.dart';
-import 'modules/Auth_screen/domain/use_cases/sign_in_with_google_use_case.dart';
-import 'modules/Auth_screen/domain/use_cases/reset_password_use_case.dart';
-import 'modules/Auth_screen/presentation/manager/auth_bloc.dart';
+import 'modules/auth_screen/data/data_source/auth_data_source_interface.dart';
+import 'modules/auth_screen/data/data_source/remote_auth_data_source.dart';
+import 'modules/auth_screen/data/repositories_imp/auth_repositories_imp.dart';
+import 'modules/auth_screen/domain/use_cases/login_use_case.dart';
+import 'modules/auth_screen/domain/use_cases/register_use_case.dart';
+import 'modules/auth_screen/domain/use_cases/sign_in_with_google_use_case.dart';
+import 'modules/auth_screen/domain/use_cases/reset_password_use_case.dart';
+import 'modules/auth_screen/presentation/manager/auth_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (Firebase.apps.isEmpty) {

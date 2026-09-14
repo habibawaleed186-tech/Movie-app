@@ -1,4 +1,4 @@
-import 'package:movie_app/modules/Auth_screen/domain/repositories/auth_repositories.dart';
+import 'package:movie_app/modules/auth_screen/domain/repositories/auth_repositories.dart';
 
 class ResetPasswordUseCase {
   final AuthRepositories repositories;

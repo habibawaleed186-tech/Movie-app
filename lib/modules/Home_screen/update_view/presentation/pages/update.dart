@@ -8,10 +8,8 @@ import 'package:movie_app/modules/Home_screen/update_view/presentation/pages/wid
 import '../../../../../core/services/Snackbar_service.dart';
 import '../../../../../core/utiles/avatar_data.dart';
 import '../../../../../gen/assets.gen.dart';
-import '../../../../Auth_screen/presentation/manager/auth_bloc.dart';
-import '../../../../Auth_screen/presentation/manager/auth_state.dart';
-import '../../../../Auth_screen/presentation/widgets/custonWidget.dart';
-import '../../../../Auth_screen/presentation/widgets/textFormField.dart';
+import '../../../../auth_screen/presentation/widgets/custonWidget.dart';
+import '../../../../auth_screen/presentation/widgets/textFormField.dart';
 import '../../domain/entities/update_profile_entity.dart';
 import '../manager/update_profile_bloc.dart';
 
@@ -75,6 +73,8 @@ class _UpdateState extends State<Update> {
             BotToastService.showSuccessMessage(
               'Profile updated successfully',
             );
+
+            Navigator.pushReplacementNamed(context, AppRoutes.layout);
           }
 
           if (state is UpdateProfileError) {

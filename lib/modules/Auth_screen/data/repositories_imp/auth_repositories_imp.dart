@@ -1,5 +1,5 @@
-import 'package:movie_app/modules/Auth_screen/data/data_source/remote_auth_data_source.dart';
-import 'package:movie_app/modules/Auth_screen/domain/entities/user_entity.dart';
+import 'package:movie_app/modules/auth_screen/data/data_source/remote_auth_data_source.dart';
+import 'package:movie_app/modules/auth_screen/domain/entities/user_entity.dart';
 
 import '../../domain/repositories/auth_repositories.dart';
 import '../data_source/auth_data_source_interface.dart';

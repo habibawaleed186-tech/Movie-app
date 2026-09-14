@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:movie_app/modules/Auth_screen/data/data_source/auth_data_source_interface.dart';
-import 'package:movie_app/modules/Auth_screen/data/models/user_model.dart';
+import 'package:movie_app/modules/auth_screen/data/data_source/auth_data_source_interface.dart';
+import 'package:movie_app/modules/auth_screen/data/models/user_model.dart';
 
 class RemoteAuthDataSource implements AuthDataSourceInterface {
   final FirebaseAuth firebaseAuth;
