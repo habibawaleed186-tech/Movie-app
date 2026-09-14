@@ -12,7 +12,44 @@
           "package_name": "com.example.movie_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "43641634764-3dr58dudcdfhs0bagnm2j90h75sfol99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.movie_app",
+            "certificate_hash": "5f450cf6809eca61494a1ff07114fb1099ad25a0"
+          }
+        },
+        {
+          "client_id": "43641634764-dvtg14c9jtp2kb24sliep575cf0prov6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.movie_app",
+            "certificate_hash": "d5694bd83b9809e9a63800730b2659aa81181973"
+          }
+        },
+        {
+          "client_id": "43641634764-ha54c1v7eegju4qr8f7poe1ifa39gh0k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.movie_app",
+            "certificate_hash": "43bc3a5e3c901b470be44b9be2d57a0119a14eba"
+          }
+        },
+        {
+          "client_id": "43641634764-rhhaq403pdhaek49uesnd53c82lqegeo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.movie_app",
+            "certificate_hash": "e8d88b9ef3b5559e390fbd660edf03876e5d7835"
+          }
+        },
+        {
+          "client_id": "43641634764-ptqq8po8fp9cm8c88ee710du3733dsnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCzwcQWRxAsAF2tEZZ4_MSOQfYXCcbJ3-w"
@@ -20,7 +57,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43641634764-ptqq8po8fp9cm8c88ee710du3733dsnp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "43641634764-rskf79f33o9lo8f8t78nqavetjo61aec.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movieApp"
+              }
+            }
+          ]
         }
       }
     }
