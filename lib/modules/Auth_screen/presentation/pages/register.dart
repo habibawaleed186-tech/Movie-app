@@ -51,7 +51,7 @@ class _RegisterScreenState extends State<Register> {
               backgroundColor: Colors.green,
             ),
           );
-          Navigator.pushReplacementNamed(context, AppRoutes.layout);
+          Navigator.pushReplacementNamed(context, AppRoutes.loginView);
         } else if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
