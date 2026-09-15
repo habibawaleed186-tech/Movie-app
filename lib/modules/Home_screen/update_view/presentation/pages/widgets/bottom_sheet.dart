@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../gen/assets.gen.dart';
+import '../../../../../../gen/assets.gen.dart';
 import 'avatar_card.dart';
 class BottomSheetCard extends StatefulWidget {
   final List<AssetGenImage> avatarImages;

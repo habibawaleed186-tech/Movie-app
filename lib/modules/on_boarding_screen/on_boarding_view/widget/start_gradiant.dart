@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/assets/app_assets.dart';
 import '../../../../core/config/app_color.dart';
-import '../../../Auth_screen/presentation/pages/login.dart';
+import '../../../auth_screen/presentation/pages/login.dart';
 
 
 class StartGradiant extends StatelessWidget {
@@ -69,7 +70,9 @@ class StartGradiant extends StatelessWidget {
                   width: double.infinity,
                   height: 50.h,
                   child: GestureDetector(
-                    onTap: () {
+                    onTap: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.setBool('isOnBoardingShown', true);
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(builder: (context) => Login(),
