@@ -1,4 +1,6 @@
-import '../entities/user_entity.dart';
+
+import 'package:movie_app/modules/auth_screen/domain/entities/user_entity.dart';
+
 import '../repositories/auth_repositories.dart';
 
 class SignInWithGoogleUseCase {
@@ -7,6 +9,6 @@ class SignInWithGoogleUseCase {
   SignInWithGoogleUseCase({required this.authRepositories});
 
   Future<UserEntity> call() async {
-    return authRepositories.signInWithGoogle();
+    return await authRepositories.signInWithGoogle();
   }
 }
