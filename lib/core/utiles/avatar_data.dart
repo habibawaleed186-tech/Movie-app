@@ -6,7 +6,7 @@ class AvatarData {
     Assets.images.gamer11,
     Assets.images.gamer1,
     Assets.images.gamer14,
-    Assets.images.gamer18,
+    Assets.images.gamer18Png,
     Assets.images.gamer13,
     Assets.images.gamer17,
     Assets.images.gamer16,

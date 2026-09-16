@@ -3,6 +3,7 @@ abstract class AppAssets {
   static const String create = "assets/images/create.png";
   static const String explore = "assets/images/explore.png";
   static const String rate = "assets/images/rate.png";
+  static const String doctor = "assets/images/doctor.png";
   static const String start = "assets/images/start.png";
   static const String discover = "assets/images/discover.png";
   static const String moviesPoster = "assets/images/Movies Posters.png";
@@ -26,6 +27,23 @@ abstract class AppAssets {
   static const String poster = "assets/images/Movies Posters.png";
   static const String headerText = "assets/images/Available Now.png";
   static const String watchNow = "assets/images/97ab5fb2e4e76c640b21b6db578a86b1e22877ec.png";
-
-  
+  static const String arrow = "assets/icons/arrow.svg";
+  static const String bookmark = "assets/icons/bookmark.svg";
+  static const String heart = "assets/icons/heart.svg";
+  static const String play = "assets/icons/play.svg";
+  static const String star = "assets/icons/Language star.svg";
+  static const String time = "assets/icons/time.svg";
+  static const String phone = "assets/icons/phone.svg";
+  static const String user = "assets/icons/user.svg";
+  static const String screenshot1 = "assets/images/screenshot1.png";
+  static const String screenshot2 = "assets/images/screenshot2.png";
+  static const String screenshot3 = "assets/images/screenshot3.png";
+  static const String similar1 = "assets/images/similar1.png";
+  static const String similar2 = "assets/images/similar2.png";
+  static const String similar3 = "assets/images/similar3.png";
+  static const String similar4 = "assets/images/similar4.png";
+  static const String cast1 = "assets/images/cast1.png";
+  static const String cast2 = "assets/images/cast2.png";
+  static const String cast3 = "assets/images/cast3.png";
+  static const String cast4 = "assets/images/cast4.png";
 }

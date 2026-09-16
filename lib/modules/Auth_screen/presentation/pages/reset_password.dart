@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_bloc.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_event.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_state.dart';
 
 import '../../../../core/assets/app_assets.dart';
 import '../../../../core/config/app_color.dart';
-import '../manager/auth_bloc.dart';
-import '../manager/auth_event.dart';
-import '../manager/auth_state.dart';
 import '../widgets/custonWidget.dart';
 
 class ResetPassword extends StatelessWidget {
