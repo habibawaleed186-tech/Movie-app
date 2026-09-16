@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app/modules/movie_details/widgets/cast.dart';
-import 'package:movie_app/modules/movie_details/widgets/genres.dart';
-import 'package:movie_app/modules/movie_details/widgets/movie_header.dart';
-import 'package:movie_app/modules/movie_details/widgets/screen_shots.dart';
-import 'package:movie_app/modules/movie_details/widgets/similar.dart';
-import 'package:movie_app/modules/movie_details/widgets/summary.dart';
+import 'package:movie_app/modules/movie_details/presentation/pages/movie_details_screen/widgets/cast.dart';
+import 'package:movie_app/modules/movie_details/presentation/pages/movie_details_screen/widgets/genres.dart';
+import 'package:movie_app/modules/movie_details/presentation/pages/movie_details_screen/widgets/movie_header.dart';
+import 'package:movie_app/modules/movie_details/presentation/pages/movie_details_screen/widgets/screen_shots.dart';
+import 'package:movie_app/modules/movie_details/presentation/pages/movie_details_screen/widgets/similar.dart';
+import 'package:movie_app/modules/movie_details/presentation/pages/movie_details_screen/widgets/summary.dart';
 
-import '../../core/config/app_color.dart';
+import '../../../../../core/config/app_color.dart';
 
 class MovieDetailsView extends StatelessWidget {
   const MovieDetailsView({super.key});

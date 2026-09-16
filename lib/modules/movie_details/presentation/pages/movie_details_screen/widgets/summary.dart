@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/config/app_color.dart';
+import '../../../../../../core/config/app_color.dart';
 
 class Summary extends StatelessWidget {
   const Summary({super.key});

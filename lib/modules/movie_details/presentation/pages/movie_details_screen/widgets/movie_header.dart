@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../core/assets/app_assets.dart';
-import '../../../core/config/app_color.dart';
+import '../../../../../../core/assets/app_assets.dart';
+import '../../../../../../core/config/app_color.dart';
 
 class MovieHeader extends StatelessWidget {
   const MovieHeader({super.key});

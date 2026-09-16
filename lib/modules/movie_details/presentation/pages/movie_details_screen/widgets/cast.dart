@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/assets/app_assets.dart';
-import '../../../core/config/app_color.dart';
+import '../../../../../../core/assets/app_assets.dart';
+import '../../../../../../core/config/app_color.dart';
 
 class Cast extends StatelessWidget {
   const Cast({super.key});
