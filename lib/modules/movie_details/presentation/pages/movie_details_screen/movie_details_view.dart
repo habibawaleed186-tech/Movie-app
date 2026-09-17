@@ -12,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../manager/movie_details_bloc.dart';
 
-
 class MovieDetailsView extends StatefulWidget {
   final int movieId;
   const MovieDetailsView({super.key, required this.movieId});
@@ -26,7 +25,6 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
   void initState() {
     super.initState();
     context.read<MovieDetailsBloc>().add(GetMovieDetailsEvent(movieId: widget.movieId));
-    context.read<MovieDetailsBloc>().add(GetMovieSuggestionsEvent(widget.movieId));
   }
 
   @override
@@ -47,6 +45,9 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
               ),
             );
           } else if (state is MovieDetailsSuccess) {
+
+            print("--- Similar Movies Count from State: ${state.similarMovies.length} ---");
+
             return SingleChildScrollView(
               child: Column(
                 children: [
@@ -176,14 +177,13 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                     ),
                   ),
                   SizedBox(height: 16.h),
-                  const ScreenShots(),
+                  ScreenShots(screenshots: state.movie.screenshots),
                   SizedBox(height: 16.h),
                   Similar(movies: state.similarMovies),
-
                   SizedBox(height: 16.h),
                   Summary(summary: state.movie.summary),
                   SizedBox(height: 16.h),
-                  const Cast(),
+                  Cast(cast: state.movie.cast),
                   SizedBox(height: 16.h),
                   Genres(genres: state.movie.genres),
                   SizedBox(height: 60.h),

@@ -12,7 +12,6 @@ import '../../domain/use_case/movie_similar_use_case.dart';
 
 part 'movie_details_event.dart';
 part 'movie_details_state.dart';
-
 class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
   MovieDetailsBloc() : super(MovieDetailsInitial()) {
     on<GetMovieDetailsEvent>(_onGetMovieDetailsEvent);
@@ -23,19 +22,35 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
       GetMovieDetailsEvent event,
       Emitter<MovieDetailsState> emit,
       ) async {
+    print("========== 1. START LOADING MOVIE DETAILS ==========");
     emit(MovieDetailsLoading());
 
+
     final result = await GetIt.I<MovieDetailsUseCase>().execute(event.movieId);
+
     switch (result) {
       case SuccessRequest(data: final movie):
+        print("========== 2. MOVIE DETAILS SUCCESS LOADED ==========");
+
+
+        final similarResult = await GetIt.I<MovieSimilarUseCase>().call(event.movieId);
+        List<MovieEntity> similarMovies = [];
+
+        if (similarResult is SuccessRequest<List<MovieEntity>>) {
+          similarMovies = similarResult.data;
+          print("========== SIMILAR MOVIES LOADED: ${similarMovies.length} ==========");
+        }
+
+
         emit(
           MovieDetailsSuccess(
             movie: movie,
-            similarMovies: const [],
+            similarMovies: similarMovies,
           ),
         );
 
       case FailureRequest(exception: final exception):
+        print("========== MOVIE DETAILS ERROR: ${exception.message} ==========");
         emit(
           MovieDetailsError(
             exception.message ?? "Something went wrong",
@@ -48,18 +63,6 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
       GetMovieSuggestionsEvent event,
       Emitter<MovieDetailsState> emit,
       ) async {
-    final result = await GetIt.I<MovieSimilarUseCase>().call(event.movieId);
 
-    switch (result) {
-      case SuccessRequest(data: final movies):
-        if (state is MovieDetailsSuccess) {
-          final currentMovie = (state as MovieDetailsSuccess).movie;
-          emit(MovieDetailsSuccess(movie: currentMovie, similarMovies: movies));
-        }
-        break;
-
-      case FailureRequest(exception: final exception):
-        break;
-    }
   }
 }

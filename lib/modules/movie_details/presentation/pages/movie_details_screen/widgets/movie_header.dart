@@ -12,10 +12,10 @@ class MovieHeader extends StatelessWidget {
   const MovieHeader({super.key, required this.movie});
 
   String get _backgroundImage {
-    if (movie.backgroundImage.isNotEmpty) {
-      return movie.backgroundImage;
+    if (movie.coverImage.isNotEmpty) {
+      return movie.coverImage;
     }
-    return movie.coverImage;
+    return movie.backgroundImage;
   }
 
   @override

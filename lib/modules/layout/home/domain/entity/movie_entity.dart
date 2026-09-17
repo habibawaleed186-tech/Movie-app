@@ -9,6 +9,8 @@ class MovieEntity {
   final String summary;
   final String coverImage;
   final String backgroundImage;
+  final List<String> screenshots;
+  final List<CastEntity> cast;
 
   const MovieEntity({
     this.id,
@@ -21,5 +23,19 @@ class MovieEntity {
     this.summary = '',
     this.coverImage = '',
     this.backgroundImage = '',
+    this.screenshots = const [],
+    this.cast = const [],
+  });
+}
+
+class CastEntity {
+  final String name;
+  final String characterName;
+  final String profilePath;
+
+  const CastEntity({
+    this.name = '',
+    this.characterName = '',
+    this.profilePath = '',
   });
 }

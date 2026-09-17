@@ -16,25 +16,25 @@ class MovieDetailsDi {
   static void setUp(){
 
     getIt
-    ..registerLazySingleton(
-    ()=>RemoteMovieDetailsDataSource(getIt<DioApiClient>()),
-    )
-    ..registerLazySingleton(
-    ()=> MovieDetailsImp(getIt<RemoteMovieDetailsDataSource>()),
-    )
-    ..registerLazySingleton(
-    ()=> MovieDetailsUseCase(getIt<MovieDetailsImp>())
-    )
+      ..registerLazySingleton(
+            ()=> RemoteMovieDetailsDataSource(getIt<DioApiClient>()),
+      )
+      ..registerLazySingleton(
+            ()=> MovieDetailsImp(getIt<RemoteMovieDetailsDataSource>()),
+      )
+      ..registerLazySingleton(
+              ()=> MovieDetailsUseCase(getIt<MovieDetailsImp>())
+      )
 
-    ..registerLazySingleton<MovieSimilarDataSourceInterface>(
-    () => RemoteMovieSimilarDataSource(getIt<ApiInterface>()),
-    )
-    ..registerLazySingleton<MovieSimilarRepository>(
-    () => MovieSimilarImp(getIt<MovieSimilarDataSourceInterface>()),
-    )
-    ..registerLazySingleton(
-    () => MovieSimilarUseCase(getIt<MovieSimilarRepository>()),
-    );
+      ..registerLazySingleton<MovieSimilarDataSourceInterface>(
+            () => RemoteMovieSimilarDataSource(getIt<DioApiClient>()), // بدل ApiInterface خليناها DioApiClient
+      )
+      ..registerLazySingleton<MovieSimilarRepository>(
+            () => MovieSimilarImp(getIt<MovieSimilarDataSourceInterface>()),
+      )
+      ..registerLazySingleton(
+            () => MovieSimilarUseCase(getIt<MovieSimilarRepository>()),
+      );
 
   }
 }

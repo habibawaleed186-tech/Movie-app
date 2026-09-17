@@ -6,12 +6,14 @@ import 'package:movie_app/core/routes/app_routes.dart';
 
 import 'package:movie_app/modules/layout/home/domain/entity/movie_entity.dart';
 class Similar extends StatelessWidget {
-  final List movies;
+
+  final List<MovieEntity> movies;
 
   const Similar({super.key, required this.movies});
 
   @override
   Widget build(BuildContext context) {
+    print("Similar movies count: ${movies.length}");
     if (movies.isEmpty) {
       return const SizedBox.shrink();
     }
@@ -56,7 +58,8 @@ class Similar extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.r),
                     child: Image.network(
-                      movie.mediumCoverImage,
+
+                      movie.coverImage,
                       width: 189.w,
                       height: 279.h,
                       fit: BoxFit.cover,
@@ -79,7 +82,6 @@ class Similar extends StatelessWidget {
           ),
         ),
       ],
-    
     );
   }
 }

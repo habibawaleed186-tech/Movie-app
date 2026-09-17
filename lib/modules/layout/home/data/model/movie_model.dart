@@ -12,6 +12,8 @@ class MovieModel extends MovieEntity {
     super.summary,
     super.coverImage,
     super.backgroundImage,
+    super.screenshots,
+    super.cast,
   });
 
   factory MovieModel.fromJson(Map<String, dynamic>? json) {
@@ -27,8 +29,6 @@ class MovieModel extends MovieEntity {
 
     final title = map['title']?.toString() ?? '';
 
-    // list_movies returns "summary" while movie_details returns
-    // "description_intro" / "description_full".
     final summary = (map['summary'] ??
             map['description_intro'] ??
             map['description_full'])
@@ -38,11 +38,30 @@ class MovieModel extends MovieEntity {
     final runtime = map['runtime'] is num ? (map['runtime'] as num).toInt() : 0;
     final likeCount =
         map['like_count'] is num ? (map['like_count'] as num).toInt() : 0;
+    
     final coverImage =
         map['medium_cover_image']?.toString() ??
         map['large_cover_image']?.toString() ??
         '';
     final backgroundImage = map['background_image']?.toString() ?? '';
+
+    final screenshots = <String>[];
+    if (map['large_screenshot_image1'] != null) screenshots.add(map['large_screenshot_image1']);
+    if (map['large_screenshot_image2'] != null) screenshots.add(map['large_screenshot_image2']);
+    if (map['large_screenshot_image3'] != null) screenshots.add(map['large_screenshot_image3']);
+
+    final castList = <CastEntity>[];
+    if (map['cast'] is List) {
+      for (var castItem in map['cast']) {
+        if (castItem is Map) {
+          castList.add(CastEntity(
+            name: castItem['name']?.toString() ?? '',
+            characterName: castItem['character_name']?.toString() ?? '',
+            profilePath: castItem['url_small_image']?.toString() ?? '',
+          ));
+        }
+      }
+    }
 
     return MovieModel(
       id: map['id'] is num ? (map['id'] as num).toInt() : null,
@@ -55,6 +74,8 @@ class MovieModel extends MovieEntity {
       summary: summary,
       coverImage: coverImage,
       backgroundImage: backgroundImage,
+      screenshots: screenshots,
+      cast: castList,
     );
   }
 }

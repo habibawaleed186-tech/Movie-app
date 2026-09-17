@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../core/assets/app_assets.dart';
 import '../../../../../../core/config/app_color.dart';
 
 class ScreenShots extends StatelessWidget {
-  const ScreenShots({super.key});
+  final List<String> screenshots;
+  const ScreenShots({super.key, required this.screenshots});
 
   @override
   Widget build(BuildContext context) {
+    if (screenshots.isEmpty) return const SizedBox.shrink();
+
     return Column(
       children: [
         Padding(
@@ -28,50 +30,30 @@ class ScreenShots extends StatelessWidget {
             ],
           ),
         ),
-
         SizedBox(height: 9.h),
-
-        Padding(
+        ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.r),
-            child: Image.asset(
-              AppAssets.screenshot1,
-              width: double.infinity,
-              height: 167.h,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-
-        SizedBox(height: 13.h),
-
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.r),
-            child: Image.asset(
-              AppAssets.screenshot2,
-              width: double.infinity,
-              height: 167.h,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-
-        SizedBox(height: 13.h),
-
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.r),
-            child: Image.asset(
-              AppAssets.screenshot3,
-              width: double.infinity,
-              height: 167.h,
-              fit: BoxFit.cover,
-            ),
-          ),
+          itemCount: screenshots.length,
+          separatorBuilder: (context, index) => SizedBox(height: 13.h),
+          itemBuilder: (context, index) {
+            return ClipRRect(
+              borderRadius: BorderRadius.circular(16.r),
+              child: Image.network(
+                screenshots[index],
+                width: double.infinity,
+                height: 167.h,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  width: double.infinity,
+                  height: 167.h,
+                  color: AppColor.grey,
+                  child: const Icon(Icons.broken_image, color: Colors.white),
+                ),
+              ),
+            );
+          },
         ),
       ],
     );

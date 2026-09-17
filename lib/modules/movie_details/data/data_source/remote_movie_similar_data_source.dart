@@ -9,12 +9,17 @@ class RemoteMovieSimilarDataSource implements MovieSimilarDataSourceInterface{
   ApiInterface _apiInterface;
   RemoteMovieSimilarDataSource(this._apiInterface);
   @override
-  Future<Response<dynamic>>getMovieSuggestions(int movieId) async{
-    return await _apiInterface.get(
-      EndPoints.movieSuggestions,
-      queryParameters: {
-        'movie_id':movieId,
-      }
+  Future<Response<dynamic>> getMovieSuggestions(int movieId) async{
+    final response = await _apiInterface.get(
+        EndPoints.movieSuggestions,
+        queryParameters: {
+          'movie_id': movieId,
+        }
     );
+
+
+    print("========== FULL API RESPONSE: ${response.data} ==========");
+
+    return response;
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/config/app_color.dart';
-
 class Summary extends StatelessWidget {
   final String summary;
 
@@ -38,16 +37,18 @@ class Summary extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                summary.isEmpty
-                    ? "No summary available for this movie."
-                    : summary,
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  color: AppColor.white,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  decoration: TextDecoration.none,
+              Expanded(
+                child: Text(
+                  summary.isEmpty
+                      ? "No summary available for this movie."
+                      : summary,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: AppColor.white,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    decoration: TextDecoration.none,
+                  ),
                 ),
               ),
             ],

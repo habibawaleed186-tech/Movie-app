@@ -13,6 +13,8 @@ class RemoteMovieDetailsDataSource  implements MovieDetailsDataSourceInterface{
       EndPoints.movieDetails,
       queryParameters: {
         'movie_id': movieId,
+        'with_cast': true,
+        'with_images': true,
       },
     );
   }

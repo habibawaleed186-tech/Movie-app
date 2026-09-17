@@ -182,7 +182,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 520,
+                      height: 560,
                       child: Stack(
                         children: [
                           Positioned.fill(
@@ -200,7 +200,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                   height: 40,
                                   width:
                                   MediaQuery.of(context).size.width * 0.50,
-                                  fit: BoxFit.cover,
+                                  fit: BoxFit.contain,
                                 ),
                                 const SizedBox(height: 15),
                                 CarouselSlider.builder(
@@ -236,7 +236,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                           child: Stack(
                                             children: [
                                               Container(
-                                                width: 220,
+                                                width: MediaQuery.of(context).size.width * 0.55,
                                                 height: 320,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
@@ -355,10 +355,10 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                 ),
                                 SizedBox(
                                   height: 45,
-                                  width: 330,
+                                  width: MediaQuery.of(context).size.width * 0.85,
                                   child: Image.asset(
                                     AppAssets.watchNow,
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     filterQuality: FilterQuality.high,
                                   ),
                                 ),

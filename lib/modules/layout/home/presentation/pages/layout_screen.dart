@@ -39,10 +39,10 @@ class _LayoutScreenState extends State<LayoutScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildNavItem(0, AppAssets.homeicon),
-                _buildNavItem(1, AppAssets.browseicon),
-                _buildNavItem(2, AppAssets.searchicon),
-                _buildNavItem(3, AppAssets.profileicon),
+                Expanded(child: _buildNavItem(0, AppAssets.homeicon)),
+                Expanded(child: _buildNavItem(1, AppAssets.browseicon)),
+                Expanded(child: _buildNavItem(2, AppAssets.searchicon)),
+                Expanded(child: _buildNavItem(3, AppAssets.profileicon)),
               ],
             ),
           ),
