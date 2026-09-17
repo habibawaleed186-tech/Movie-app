@@ -1,6 +1,5 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:movie_app/modules/Auth_screen/domain/entities/user_entity.dart';
 
 sealed class AuthEvent extends Equatable {
   const AuthEvent();
@@ -13,7 +12,7 @@ final class LoginEvent extends AuthEvent {
   final String email;
   final String password;
 
-  const LoginEvent({
+  LoginEvent({
     required this.email,
     required this.password,
   });
@@ -40,4 +39,17 @@ final class RegisterEvent extends AuthEvent {
 
   @override
   List<Object?> get props => [name, email, password, phone, avatarIndex];
+
+
+
+
+}
+
+final class SignInWithGoogleEvent extends AuthEvent {}
+
+final class ResetPasswordEvent extends AuthEvent {
+  final String email;
+  const ResetPasswordEvent({required this.email});
+  @override
+  List<Object?> get props => [email];
 }

@@ -1,0 +1,90 @@
+class MovieEntity {
+  final int id;
+  final String url;
+  final String imdbCode;
+  final String title;
+  final String titleEnglish;
+  final String titleLong;
+  final String slug;
+  final int year;
+  final double rating;
+  final int runtime;
+  final List<String> genres;
+  final int likeCount;
+  final String descriptionIntro;
+  final String descriptionFull;
+  final String ytTrailerCode;
+  final String language;
+  final String mpaRating;
+  final String backgroundImage;
+  final String backgroundImageOriginal;
+  final String smallCoverImage;
+  final String mediumCoverImage;
+  final String largeCoverImage;
+  final List<TorrentEntity> torrents;
+  final String dateUploaded;
+  final int dateUploadedUnix;
+
+  MovieEntity({
+    required this.id,
+    required this.url,
+    required this.imdbCode,
+    required this.title,
+    required this.titleEnglish,
+    required this.titleLong,
+    required this.slug,
+    required this.year,
+    required this.rating,
+    required this.runtime,
+    required this.genres,
+    required this.likeCount,
+    required this.descriptionIntro,
+    required this.descriptionFull,
+    required this.ytTrailerCode,
+    required this.language,
+    required this.mpaRating,
+    required this.backgroundImage,
+    required this.backgroundImageOriginal,
+    required this.smallCoverImage,
+    required this.mediumCoverImage,
+    required this.largeCoverImage,
+    required this.torrents,
+    required this.dateUploaded,
+    required this.dateUploadedUnix,
+  });
+}
+
+
+class TorrentEntity {
+  final String url;
+  final String hash;
+  final String quality;
+  final String type;
+  final String isRepack;
+  final String videoCodec;
+  final String bitDepth;
+  final String audioChannels;
+  final int seeds;
+  final int peers;
+  final String size;
+  final int sizeBytes;
+  final String dateUploaded;
+  final int dateUploadedUnix;
+
+  TorrentEntity({
+    required this.url,
+    required this.hash,
+    required this.quality,
+    required this.type,
+    required this.isRepack,
+    required this.videoCodec,
+    required this.bitDepth,
+    required this.audioChannels,
+    required this.seeds,
+    required this.peers,
+    required this.size,
+    required this.sizeBytes,
+    required this.dateUploaded,
+    required this.dateUploadedUnix,
+  });
+}

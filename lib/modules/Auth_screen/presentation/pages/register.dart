@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
-import '../../domain/entities/user_entity.dart';
-import '../manager/auth_bloc.dart';
-import '../manager/auth_event.dart';
-import '../manager/auth_state.dart';
+
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_event.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_bloc.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_state.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_bloc.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_event.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_state.dart';
+
 import '../widgets/avatar.dart';
 import '../widgets/custonWidget.dart';
 import '../widgets/textFormField.dart';
@@ -170,9 +174,6 @@ class _RegisterScreenState extends State<Register> {
                       text: 'Create Account',
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          print('Avatar: $_selectedAvatarIndex');
-                          print('Name: ${_nameController.text}');
-                          print('Email: ${_emailController.text}');
                           context.read<AuthBloc>().add(
                             RegisterEvent(
                               name: _nameController.text.trim(),
