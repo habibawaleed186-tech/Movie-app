@@ -13,3 +13,11 @@ class GetMovieDetailsEvent  extends MovieDetailsEvent{
   List<Object?> get props => throw UnimplementedError();
 
 }
+class GetMovieSuggestionsEvent extends MovieDetailsEvent {
+  final int movieId;
+  GetMovieSuggestionsEvent(this.movieId);
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [movieId];
+}

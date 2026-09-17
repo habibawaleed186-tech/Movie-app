@@ -16,10 +16,17 @@ final class MovieDetailsLoading extends MovieDetailsState {
 
 final class MovieDetailsSuccess extends MovieDetailsState {
   final MovieEntity movie;
-  const MovieDetailsSuccess(this.movie);
+  final List<MovieEntity> similarMovies;
+
+  const MovieDetailsSuccess({
+  required this.movie,
+  required this.similarMovies,
+  });
+
   @override
-  List<Object> get props => [movie];
-}
+  List<Object> get props => [movie, similarMovies];
+  }
+
 
 
 final class MovieDetailsError extends MovieDetailsState {

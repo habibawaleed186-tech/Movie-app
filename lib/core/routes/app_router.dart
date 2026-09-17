@@ -39,7 +39,11 @@ abstract class AppRouter {
         return MaterialPageRoute(builder: (context) => ResetPassword());
 
       case AppRoutes.movieDetails:
-        return MaterialPageRoute(builder: (context) => MovieDetailsView());
+        final int movieId = settings.arguments as int;
+        return MaterialPageRoute(
+          builder: (context) => MovieDetailsView(movieId: movieId),
+          settings: settings,
+        );
 
       case AppRoutes.updateProfile:
         return MaterialPageRoute(builder: (((context) => BlocProvider<UpdateProfileBloc>(

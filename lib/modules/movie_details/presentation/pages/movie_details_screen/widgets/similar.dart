@@ -1,89 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../core/assets/app_assets.dart';
-import '../../../../../../core/config/app_color.dart';
+import 'package:movie_app/core/config/app_color.dart';
 
+import 'package:movie_app/modules/layout/home/domain/entity/movie_entity.dart';
 class Similar extends StatelessWidget {
-  const Similar({super.key});
+  final List movies;
+
+  const Similar({super.key, required this.movies});
 
   @override
   Widget build(BuildContext context) {
+    if (movies.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                "Similar",
-                style: TextStyle(
-                  color: AppColor.white,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w700,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-            ],
+          child: Text(
+            "Similar",
+            style: TextStyle(
+              color: AppColor.white,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w700,
+              decoration: TextDecoration.none,
+            ),
           ),
         ),
-
         SizedBox(height: 11.h),
-
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16.r),
-                child: Image.asset(
-                  AppAssets.similar1,
-                  width: 189.w,
-                  height: 279.h,
-                  fit: BoxFit.cover,
+        SizedBox(
+          height: 279.h,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: movies.length,
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            itemBuilder: (context, index) {
+              final movie = movies[index];
+              return Padding(
+                padding: EdgeInsets.only(right: 16.w),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16.r),
+                  child: Image.network(
+                    movie.mediumCoverImage,
+                    width: 189.w,
+                    height: 279.h,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        width: 189.w,
+                        height: 279.h,
+                        color: AppColor.grey,
+                        child: const Icon(
+                          Icons.broken_image,
+                          color: Colors.white,
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              ),
-              SizedBox(width: 20.w),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16.r),
-                child: Image.asset(
-                  AppAssets.similar2,
-                  width: 189.w,
-                  height: 279.h,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        SizedBox(height: 16.h),
-
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16.r),
-                child: Image.asset(
-                  AppAssets.similar3,
-                  width: 189.w,
-                  height: 279.h,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(width: 20.w),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16.r),
-                child: Image.asset(
-                  AppAssets.similar4,
-                  width: 189.w,
-                  height: 279.h,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ],
+              );
+            },
           ),
         ),
       ],
