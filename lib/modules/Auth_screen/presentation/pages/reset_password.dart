@@ -6,6 +6,7 @@ import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/modules/auth_screen/presentation/manager/auth_bloc.dart';
 import 'package:movie_app/modules/auth_screen/presentation/manager/auth_event.dart';
 import 'package:movie_app/modules/auth_screen/presentation/manager/auth_state.dart';
+
 import '../widgets/custonWidget.dart';
 
 

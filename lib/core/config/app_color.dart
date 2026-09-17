@@ -12,4 +12,5 @@ class AppColor {
   static const orange = Color(0xFF85210E);
   static const burgundy = Color(0xFF601321);
   static const turquoise = Color(0xFF084250);
+  static const text = Color(0xFFADADAD);
 }

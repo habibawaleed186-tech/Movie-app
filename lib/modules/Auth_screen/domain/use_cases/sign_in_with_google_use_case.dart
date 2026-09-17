@@ -9,6 +9,6 @@ class SignInWithGoogleUseCase {
   SignInWithGoogleUseCase({required this.authRepositories});
 
   Future<UserEntity> call() async {
-    return await authRepositories.signInWithGoogle();
+    return authRepositories.signInWithGoogle();
   }
 }

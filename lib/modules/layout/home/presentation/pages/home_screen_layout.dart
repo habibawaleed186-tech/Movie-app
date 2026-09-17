@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
 import 'package:movie_app/core/assets/app_assets.dart';
 import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/modules/layout/home/data/datasource/movie_remote_data_source.dart';
@@ -217,102 +216,111 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                         : movie.backgroundImage;
 
                                     return Center(
-                                      child: AnimatedScale(
-                                        duration: const Duration(
-                                          milliseconds: 300,
-                                        ),
-                                        scale: isActive ? 1.0 : 0.86,
-                                        child: Stack(
-                                          children: [
-                                            Container(
-                                              width: 220,
-                                              height: 320,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                BorderRadius.circular(20),
-                                                image: DecorationImage(
-                                                  image: cover.isNotEmpty &&
-                                                      cover.startsWith(
-                                                          'http')
-                                                      ? NetworkImage(cover)
-                                                      : const AssetImage(
-                                                      AppAssets.poster)
-                                                  as ImageProvider,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                boxShadow: isActive
-                                                    ? [
-                                                  BoxShadow(
-                                                    color: Colors.black
-                                                        .withValues(
-                                                      alpha: 0.35,
-                                                    ),
-                                                    blurRadius: 18,
-                                                    offset:
-                                                    const Offset(
-                                                      0,
-                                                      12,
-                                                    ),
-                                                  ),
-                                                ]
-                                                    : null,
-                                              ),
-                                            ),
-                                            Positioned(
-                                              top: 12,
-                                              left: 12,
-                                              child: Container(
-                                                padding:
-                                                const EdgeInsets.symmetric(
-                                                  horizontal: 8,
-                                                  vertical: 6,
-                                                ),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.pushNamed(
+                                            context,
+                                            '/movieDetails',
+                                          );
+                                        },
+                                        child: AnimatedScale(
+                                          duration: const Duration(
+                                            milliseconds: 300,
+                                          ),
+                                          scale: isActive ? 1.0 : 0.86,
+                                          child: Stack(
+                                            children: [
+                                              Container(
+                                                width: 220,
+                                                height: 320,
                                                 decoration: BoxDecoration(
-                                                  color: Colors.black
-                                                      .withValues(
-                                                    alpha: 0.55,
-                                                  ),
                                                   borderRadius:
-                                                  BorderRadius.circular(30),
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                  MainAxisSize.min,
-                                                  children: [
-                                                    RatingBarIndicator(
-                                                      rating: movie.rating,
-                                                      itemCount: 1,
-                                                      itemSize: 12,
-                                                      itemBuilder:
-                                                          (context, index) {
-                                                        return const Icon(
-                                                          Icons.star,
-                                                          color: Colors.amber,
-                                                        );
-                                                      },
-                                                      unratedColor: Colors.white
+                                                  BorderRadius.circular(20),
+                                                  image: DecorationImage(
+                                                    image: cover.isNotEmpty &&
+                                                        cover.startsWith(
+                                                            'http')
+                                                        ? NetworkImage(cover)
+                                                        : const AssetImage(
+                                                        AppAssets.poster)
+                                                    as ImageProvider,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                  boxShadow: isActive
+                                                      ? [
+                                                    BoxShadow(
+                                                      color: Colors.black
                                                           .withValues(
                                                         alpha: 0.35,
                                                       ),
-                                                      direction:
-                                                      Axis.horizontal,
-                                                    ),
-                                                    const SizedBox(width: 6),
-                                                    Text(
-                                                      movie.rating
-                                                          .toStringAsFixed(1),
-                                                      style: const TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                        FontWeight.w600,
+                                                      blurRadius: 18,
+                                                      offset:
+                                                      const Offset(
+                                                        0,
+                                                        12,
                                                       ),
                                                     ),
-                                                  ],
+                                                  ]
+                                                      : null,
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                              Positioned(
+                                                top: 12,
+                                                left: 12,
+                                                child: Container(
+                                                  padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 8,
+                                                    vertical: 6,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.black
+                                                        .withValues(
+                                                      alpha: 0.55,
+                                                    ),
+                                                    borderRadius:
+                                                    BorderRadius.circular(30),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                    MainAxisSize.min,
+                                                    children: [
+                                                      RatingBarIndicator(
+                                                        rating: movie.rating,
+                                                        itemCount: 1,
+                                                        itemSize: 12,
+                                                        itemBuilder:
+                                                            (context, index) {
+                                                          return const Icon(
+                                                            Icons.star,
+                                                            color: Colors.amber,
+                                                          );
+                                                        },
+                                                        unratedColor: Colors
+                                                            .white
+                                                            .withValues(
+                                                          alpha: 0.35,
+                                                        ),
+                                                        direction:
+                                                        Axis.horizontal,
+                                                      ),
+                                                      const SizedBox(width: 6),
+                                                      Text(
+                                                        movie.rating
+                                                            .toStringAsFixed(1),
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                          FontWeight.w600,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     );

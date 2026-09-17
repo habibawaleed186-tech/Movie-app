@@ -18,7 +18,7 @@ class MovieRemoteDataSource {
         return const [];
       }
 
-      final moviesJson = payload['data']?['movies'];
+      final moviesJson = payload['data_source']?['movies'];
       if (moviesJson is! List) {
         return const [];
       }
