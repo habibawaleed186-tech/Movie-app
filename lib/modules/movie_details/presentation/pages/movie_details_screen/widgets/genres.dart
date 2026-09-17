@@ -4,10 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/config/app_color.dart';
 
 class Genres extends StatelessWidget {
-  const Genres({super.key});
+  final List<String> genres;
+
+  const Genres({super.key, required this.genres});
 
   @override
   Widget build(BuildContext context) {
+    if (genres.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return Column(
       children: [
         Padding(
@@ -28,138 +34,35 @@ class Genres extends StatelessWidget {
             ],
           ),
         ),
-
         SizedBox(height: 3.h),
-
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Row(
-            children: [
-              Container(
+          child: Wrap(
+            spacing: 16.w,
+            runSpacing: 11.h,
+            children: genres.map((genre) {
+              return Container(
                 width: 122.w,
                 height: 36.h,
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: AppColor.grey,
                   borderRadius: BorderRadius.circular(15.r),
                 ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  child: Text(
-                    "Action",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppColor.white,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.none,
-                    ),
+                child: Text(
+                  genre,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: AppColor.white,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    decoration: TextDecoration.none,
                   ),
                 ),
-              ),
-
-              SizedBox(width: 16.w),
-
-              Container(
-                width: 122.w,
-                height: 36.h,
-                decoration: BoxDecoration(
-                  color: AppColor.grey,
-                  borderRadius: BorderRadius.circular(15.r),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  child: Text(
-                    "Sci-Fi",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppColor.white,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
-                ),
-              ),
-
-              SizedBox(width: 16.w),
-
-              Container(
-                width: 122.w,
-                height: 36.h,
-                decoration: BoxDecoration(
-                  color: AppColor.grey,
-                  borderRadius: BorderRadius.circular(15.r),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  child: Text(
-                    "Adventure",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppColor.white,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        SizedBox(height: 11.h),
-
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Row(
-            children: [
-              Container(
-                width: 122.w,
-                height: 36.h,
-                decoration: BoxDecoration(
-                  color: AppColor.grey,
-                  borderRadius: BorderRadius.circular(15.r),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  child: Text(
-                    "Fantasy",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppColor.white,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
-                ),
-              ),
-
-              SizedBox(width: 16.w),
-
-              Container(
-                width: 122.w,
-                height: 36.h,
-                decoration: BoxDecoration(
-                  color: AppColor.grey,
-                  borderRadius: BorderRadius.circular(15.r),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  child: Text(
-                    "Horror",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppColor.white,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+              );
+            }).toList(),
           ),
         ),
       ],

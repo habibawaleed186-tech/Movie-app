@@ -11,6 +11,7 @@ import 'package:movie_app/modules/layout/home/domain/usecase/get_movies_use_case
 import 'package:movie_app/modules/layout/home/presentation/manger/home_cubit.dart';
 import 'package:movie_app/modules/layout/home/presentation/manger/home_state.dart';
 import 'package:movie_app/modules/layout/home/presentation/pages/widgets/background.dart';
+import 'package:movie_app/core/routes/app_routes.dart';
 
 class HomeScreenLayout extends StatefulWidget {
   const HomeScreenLayout({super.key});
@@ -218,9 +219,13 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                     return Center(
                                       child: GestureDetector(
                                         onTap: () {
+                                          final movieId = movie.id;
+                                          if (movieId == null) return;
+
                                           Navigator.pushNamed(
                                             context,
-                                            '/movieDetails',
+                                            AppRoutes.movieDetails,
+                                            arguments: movieId,
                                           );
                                         },
                                         child: AnimatedScale(
@@ -404,64 +409,76 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                               ? movie.coverImage
                               : movie.backgroundImage;
 
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                            ),
-                            child: Stack(
-                              children: [
-                                Container(
-                                  width: 120,
-                                  height: 180,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    image: DecorationImage(
-                                      image: poster.isNotEmpty &&
-                                          poster.startsWith('http')
-                                          ? NetworkImage(poster)
-                                          : const AssetImage(
-                                          AppAssets.poster)
-                                      as ImageProvider,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 8,
-                                  left: 8,
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 7,
-                                      vertical: 4,
-                                    ),
+                          return GestureDetector(
+                            onTap: () {
+                              final movieId = movie.id;
+                              if (movieId == null) return;
+
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.movieDetails,
+                                arguments: movieId,
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                              ),
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    width: 120,
+                                    height: 180,
                                     decoration: BoxDecoration(
-                                      color: Colors.black.withValues(
-                                        alpha: 0.55,
+                                      borderRadius: BorderRadius.circular(12),
+                                      image: DecorationImage(
+                                        image: poster.isNotEmpty &&
+                                            poster.startsWith('http')
+                                            ? NetworkImage(poster)
+                                            : const AssetImage(
+                                            AppAssets.poster)
+                                        as ImageProvider,
+                                        fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Icon(
-                                          Icons.star,
-                                          color: Colors.amber,
-                                          size: 10,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        Text(
-                                          movie.rating.toStringAsFixed(1),
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ],
                                     ),
                                   ),
-                                ),
-                              ],
+                                  Positioned(
+                                    top: 8,
+                                    left: 8,
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 7,
+                                        vertical: 4,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: Colors.black.withValues(
+                                          alpha: 0.55,
+                                        ),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          const Icon(
+                                            Icons.star,
+                                            color: Colors.amber,
+                                            size: 10,
+                                          ),
+                                          const SizedBox(width: 4),
+                                          Text(
+                                            movie.rating.toStringAsFixed(1),
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },

@@ -9,9 +9,7 @@ class GetMovieDetailsEvent  extends MovieDetailsEvent{
   const GetMovieDetailsEvent({required this.movieId});
 
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-
+  List<Object?> get props => [movieId];
 }
 class GetMovieSuggestionsEvent extends MovieDetailsEvent {
   final int movieId;

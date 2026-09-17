@@ -11,6 +11,7 @@ import '../../modules/auth_screen/presentation/pages/login.dart';
 import '../../modules/auth_screen/presentation/pages/register.dart';
 import '../../modules/auth_screen/presentation/pages/reset_password.dart';
 import '../../modules/movie_details/presentation/pages/movie_details_screen/movie_details_view.dart';
+import '../../modules/movie_details/presentation/manager/movie_details_bloc.dart';
 import 'app_routes.dart';
 
 abstract class AppRouter {
@@ -39,10 +40,16 @@ abstract class AppRouter {
         return MaterialPageRoute(builder: (context) => ResetPassword());
 
       case AppRoutes.movieDetails:
-        final int movieId = settings.arguments as int;
+        final arguments = settings.arguments;
+        final int movieId = arguments is int
+            ? arguments
+            : int.tryParse('$arguments') ?? 0;
         return MaterialPageRoute(
-          builder: (context) => MovieDetailsView(movieId: movieId),
           settings: settings,
+          builder: (context) => BlocProvider<MovieDetailsBloc>(
+            create: (context) => MovieDetailsBloc(),
+            child: MovieDetailsView(movieId: movieId),
+          ),
         );
 
       case AppRoutes.updateProfile:

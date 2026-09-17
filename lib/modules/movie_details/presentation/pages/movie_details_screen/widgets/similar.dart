@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:movie_app/core/config/app_color.dart';
+import 'package:movie_app/core/routes/app_routes.dart';
 
 import 'package:movie_app/modules/layout/home/domain/entity/movie_entity.dart';
 class Similar extends StatelessWidget {
@@ -41,24 +42,36 @@ class Similar extends StatelessWidget {
               final movie = movies[index];
               return Padding(
                 padding: EdgeInsets.only(right: 16.w),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16.r),
-                  child: Image.network(
-                    movie.mediumCoverImage,
-                    width: 189.w,
-                    height: 279.h,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        width: 189.w,
-                        height: 279.h,
-                        color: AppColor.grey,
-                        child: const Icon(
-                          Icons.broken_image,
-                          color: Colors.white,
-                        ),
-                      );
-                    },
+                child: GestureDetector(
+                  onTap: () {
+                    final movieId = movie.id;
+                    if (movieId is! int) return;
+
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.movieDetails,
+                      arguments: movieId,
+                    );
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.r),
+                    child: Image.network(
+                      movie.mediumCoverImage,
+                      width: 189.w,
+                      height: 279.h,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          width: 189.w,
+                          height: 279.h,
+                          color: AppColor.grey,
+                          child: const Icon(
+                            Icons.broken_image,
+                            color: Colors.white,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               );
@@ -66,6 +79,7 @@ class Similar extends StatelessWidget {
           ),
         ),
       ],
+    
     );
   }
 }

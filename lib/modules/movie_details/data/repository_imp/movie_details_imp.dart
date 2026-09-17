@@ -12,40 +12,58 @@ class MovieDetailsImp implements MovieDetailsRepository{
   MovieDetailsImp(this._movieDetailsDataSourceInterface);
 
   @override
-  Future<ApiResults<MovieEntity>> getMovieDetails(int movieId) async{
-   try{
-    final response = await _movieDetailsDataSourceInterface.getMovieDetails(movieId: movieId);
-    if (response.statusCode == 200) {
-      final movie = MovieModel.fromJson(
-        response.data['data']['movie'],
+  Future<ApiResults<MovieEntity>> getMovieDetails(int movieId) async {
+    try {
+      final response = await _movieDetailsDataSourceInterface.getMovieDetails(
+        movieId: movieId,
       );
 
-      return ApiResults.success(
-        data: movie,
-      );
-    } else {
+      final payload = response.data is Map ? response.data as Map : null;
+      final data = payload?['data'];
+      final movieJson = data is Map ? data['movie'] : null;
+
+      if (response.statusCode == 200 && movieJson is Map) {
+        return ApiResults.success(
+          data: MovieModel.fromJson(
+            Map<String, dynamic>.from(movieJson),
+          ),
+        );
+      }
+
+      final message =
+          payload?['status_message']?.toString() ?? 'Movie not found';
       final exception = ServerFailure(
         statusCode: response.statusCode.toString(),
-        message: response.data['status_message'],
+        message: message,
+      );
+
+      return ApiResults.failure(
+        exception: exception,
+      );
+    } on DioException catch (error) {
+      final exception = ServerFailure(
+        statusCode: error.response?.statusCode.toString() ?? '',
+        message: error.response?.data is Map
+            ? error.response?.data['status_message']?.toString() ??
+                error.message ??
+                'Something went wrong'
+            : error.message ?? 'Something went wrong',
+      );
+
+      return ApiResults.failure(
+        exception: exception,
+      );
+    } catch (error) {
+      final exception = ServerFailure(
+        statusCode: '',
+        message: error.toString(),
       );
 
       return ApiResults.failure(
         exception: exception,
       );
     }
-   }on DioException catch(error){
-     final exception = ServerFailure(
-       statusCode: error.response?.statusCode.toString() ?? '',
-       message: error.response?.data['status_message'] ??
-           error.message ??
-           'Something went wrong',
-     );
-
-     return ApiResults.failure(
-       exception: exception,
-     );
-   }
-   }
+  }
 
   
 }

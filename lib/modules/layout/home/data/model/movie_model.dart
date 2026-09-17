@@ -6,6 +6,8 @@ class MovieModel extends MovieEntity {
     super.title,
     super.rating,
     super.year,
+    super.runtime,
+    super.likeCount,
     super.genres,
     super.summary,
     super.coverImage,
@@ -24,8 +26,18 @@ class MovieModel extends MovieEntity {
         : <String>[];
 
     final title = map['title']?.toString() ?? '';
-    final summary = map['summary']?.toString() ?? '';
+
+    // list_movies returns "summary" while movie_details returns
+    // "description_intro" / "description_full".
+    final summary = (map['summary'] ??
+            map['description_intro'] ??
+            map['description_full'])
+        ?.toString() ?? '';
+
     final year = map['year'] is num ? (map['year'] as num).toInt() : 0;
+    final runtime = map['runtime'] is num ? (map['runtime'] as num).toInt() : 0;
+    final likeCount =
+        map['like_count'] is num ? (map['like_count'] as num).toInt() : 0;
     final coverImage =
         map['medium_cover_image']?.toString() ??
         map['large_cover_image']?.toString() ??
@@ -37,6 +49,8 @@ class MovieModel extends MovieEntity {
       title: title,
       rating: parsedRating,
       year: year,
+      runtime: runtime,
+      likeCount: likeCount,
       genres: genres,
       summary: summary,
       coverImage: coverImage,

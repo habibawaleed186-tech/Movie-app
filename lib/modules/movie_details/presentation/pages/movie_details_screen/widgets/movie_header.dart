@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:movie_app/modules/layout/home/domain/entity/movie_entity.dart';
 
 import '../../../../../../core/assets/app_assets.dart';
 import '../../../../../../core/config/app_color.dart';
 
 class MovieHeader extends StatelessWidget {
-  const MovieHeader({super.key});
+  final MovieEntity movie;
+
+  const MovieHeader({super.key, required this.movie});
+
+  String get _backgroundImage {
+    if (movie.backgroundImage.isNotEmpty) {
+      return movie.backgroundImage;
+    }
+    return movie.coverImage;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +28,19 @@ class MovieHeader extends StatelessWidget {
           SizedBox(
             height: 645.h,
             width: double.infinity,
-            child: Image.asset(AppAssets.doctor, fit: BoxFit.cover),
+            child: _backgroundImage.isNotEmpty &&
+                    _backgroundImage.startsWith('http')
+                ? Image.network(
+                    _backgroundImage,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        AppAssets.doctor,
+                        fit: BoxFit.cover,
+                      );
+                    },
+                  )
+                : Image.asset(AppAssets.doctor, fit: BoxFit.cover),
           ),
           Positioned.fill(
             child: Container(
@@ -70,8 +92,10 @@ class MovieHeader extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "Doctor Strange in the Multiverse\n of Madness",
+                  movie.title.isEmpty ? 'Unknown Movie' : movie.title,
                   textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: AppColor.white,
                     fontSize: 18.sp,
@@ -81,7 +105,7 @@ class MovieHeader extends StatelessWidget {
                 ),
                 SizedBox(height: 8.h),
                 Text(
-                  "2022",
+                  movie.year == 0 ? '' : '${movie.year}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: AppColor.text,

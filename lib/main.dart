@@ -17,6 +17,7 @@ import 'modules/auth_screen/domain/use_cases/register_use_case.dart';
 import 'modules/auth_screen/domain/use_cases/sign_in_with_google_use_case.dart';
 import 'modules/auth_screen/domain/use_cases/reset_password_use_case.dart';
 import 'modules/auth_screen/presentation/manager/auth_bloc.dart';
+import 'core/di/app_di.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (Firebase.apps.isEmpty) {
@@ -24,6 +25,7 @@ void main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
   }
+  AppDi.init();
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {

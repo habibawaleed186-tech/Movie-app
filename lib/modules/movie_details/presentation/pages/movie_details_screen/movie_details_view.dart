@@ -50,7 +50,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  const MovieHeader(),
+                  MovieHeader(movie: state.movie),
                   SizedBox(height: 20.h),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -103,7 +103,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                               ),
                               SizedBox(width: 12.w),
                               Text(
-                                "15",
+                                '${state.movie.likeCount}',
                                 style: TextStyle(
                                   color: AppColor.white,
                                   fontSize: 18.sp,
@@ -132,7 +132,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                               ),
                               SizedBox(width: 12.w),
                               Text(
-                                "90",
+                                '${state.movie.runtime}m',
                                 style: TextStyle(
                                   color: AppColor.white,
                                   fontSize: 18.sp,
@@ -161,7 +161,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                               ),
                               SizedBox(width: 12.w),
                               Text(
-                                "7.6",
+                                state.movie.rating.toStringAsFixed(1),
                                 style: TextStyle(
                                   color: AppColor.white,
                                   fontSize: 18.sp,
@@ -181,11 +181,11 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                   Similar(movies: state.similarMovies),
 
                   SizedBox(height: 16.h),
-                  const Summary(),
+                  Summary(summary: state.movie.summary),
                   SizedBox(height: 16.h),
                   const Cast(),
                   SizedBox(height: 16.h),
-                  const Genres(),
+                  Genres(genres: state.movie.genres),
                   SizedBox(height: 60.h),
                 ],
               ),

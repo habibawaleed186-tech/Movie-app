@@ -41,5 +41,31 @@ void main() {
       expect(movie.coverImage, isEmpty);
       expect(movie.backgroundImage, isEmpty);
     });
+
+    test('parses movie_details payload fields from API', () {
+      final movie = MovieModel.fromJson({
+        'id': 155,
+        'title': 'African Cats',
+        'year': 2010,
+        'rating': 7.5,
+        'runtime': 89,
+        'like_count': 37,
+        'genres': ['Action', 'Adventure', 'Documentary'],
+        'description_intro': 'Meet Mara, an endearing lion cub.',
+        'medium_cover_image': 'https://example.com/medium.jpg',
+        'background_image': 'https://example.com/background.jpg',
+      });
+
+      expect(movie.id, 155);
+      expect(movie.title, 'African Cats');
+      expect(movie.year, 2010);
+      expect(movie.rating, 7.5);
+      expect(movie.runtime, 89);
+      expect(movie.likeCount, 37);
+      expect(movie.summary, 'Meet Mara, an endearing lion cub.');
+      expect(movie.genres, ['Action', 'Adventure', 'Documentary']);
+      expect(movie.coverImage, 'https://example.com/medium.jpg');
+      expect(movie.backgroundImage, 'https://example.com/background.jpg');
+    });
   });
 }

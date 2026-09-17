@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/config/app_color.dart';
 
 class Summary extends StatelessWidget {
-  const Summary({super.key});
+  final String summary;
+
+  const Summary({super.key, required this.summary});
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +39,9 @@ class Summary extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                " Following the events of Spider-Man No Way Home,\n"
-                " Doctor Strange unwittingly casts a forbidden spell that\n"
-                " accidentally opens up the multiverse. With help from\n"
-                " Wong and Scarlet Witch, Strange confronts various\n"
-                " versions of himself as well as teaming up with the\n"
-                " young America Chavez while traveling through various\n"
-                " realities and working to restore reality as he knows it.\n"
-                " Along the way, Strange and his allies realize they must\n"
-                " take on a powerful new adversary who seeks to take\n"
-                " over the multiverse.—Blazer346 ",
+                summary.isEmpty
+                    ? "No summary available for this movie."
+                    : summary,
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: AppColor.white,

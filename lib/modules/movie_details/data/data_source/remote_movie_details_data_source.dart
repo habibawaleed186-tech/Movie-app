@@ -8,10 +8,13 @@ class RemoteMovieDetailsDataSource  implements MovieDetailsDataSourceInterface{
   RemoteMovieDetailsDataSource(this._apiInterface);
   
   @override
-  Future<Response<dynamic>> getMovieDetails({required int movieId})async {
-   return await _apiInterface.get(
-     '${EndPoints.movieDetails}/$movieId',
-   );
+  Future<Response<dynamic>> getMovieDetails({required int movieId}) async {
+    return await _apiInterface.get(
+      EndPoints.movieDetails,
+      queryParameters: {
+        'movie_id': movieId,
+      },
+    );
   }
 
 }
