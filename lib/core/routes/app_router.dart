@@ -10,6 +10,10 @@ import '../../modules/Home_screen/update_view/presentation/pages/update.dart';
 import '../../modules/auth_screen/presentation/pages/login.dart';
 import '../../modules/auth_screen/presentation/pages/register.dart';
 import '../../modules/auth_screen/presentation/pages/reset_password.dart';
+import 'package:movie_app/core/di/app_di.dart';
+import '../../modules/layout/browse/domain/use_cases/get_movies_by_genre_use_case.dart';
+import '../../modules/layout/browse/presentation/cubit/browse_cubit.dart';
+import '../../modules/layout/browse/presentation/pages/browse_screen.dart';
 import '../../modules/movie_details/presentation/pages/movie_details_screen/movie_details_view.dart';
 import '../../modules/movie_details/presentation/manager/movie_details_bloc.dart';
 import 'app_routes.dart';
@@ -21,7 +25,7 @@ abstract class AppRouter {
 
     switch(settings.name)
     {
-      case AppRoutes.Splach:
+      case AppRoutes.splash:
         return MaterialPageRoute(builder: (context)=> SplashView());
 
       case AppRoutes.onBoarding:
@@ -38,6 +42,17 @@ abstract class AppRouter {
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (context) => ResetPassword());
+
+      case AppRoutes.browse:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) => BlocProvider<BrowseCubit>(
+            create: (context) => BrowseCubit(
+              getMoviesByGenreUseCase: getIt<GetMoviesByGenreUseCase>(),
+            ),
+            child: const BrowseScreen(),
+          ),
+        );
 
       case AppRoutes.movieDetails:
         final arguments = settings.arguments;
@@ -58,7 +73,8 @@ abstract class AppRouter {
           child: Update(),
         ))));
 
-
+      default:
+        return null;
     }
 
   }

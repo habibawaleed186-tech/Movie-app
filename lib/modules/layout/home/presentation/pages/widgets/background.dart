@@ -43,7 +43,7 @@ class Background extends StatelessWidget {
                   Colors.black.withValues(alpha: 0.15),
                   Colors.black.withValues(alpha: 0.35),
                   Colors.black.withValues(alpha: 0.70),
-                  AppColor.Dark,
+                  AppColor.dark,
                 ],
                 stops: const [
                   0.0,

@@ -7,7 +7,7 @@ import 'package:movie_app/modules/auth_screen/presentation/manager/auth_bloc.dar
 import 'package:movie_app/modules/auth_screen/presentation/manager/auth_event.dart';
 import 'package:movie_app/modules/auth_screen/presentation/manager/auth_state.dart';
 
-import '../widgets/custonWidget.dart';
+import '../widgets/custon_widget.dart';
 
 
 class ResetPassword extends StatelessWidget {
@@ -35,11 +35,11 @@ class ResetPassword extends StatelessWidget {
         }
       },
       child: Scaffold(
-        backgroundColor: AppColor.Dark,
+        backgroundColor: AppColor.dark,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(64.h),
           child: AppBar(
-            backgroundColor: AppColor.Dark,
+            backgroundColor: AppColor.dark,
             elevation: 0,
             leading: IconButton(
               icon: Icon(
@@ -109,8 +109,6 @@ class ResetPassword extends StatelessWidget {
 
                     GestureDetector(
                       onTap: () {
-                        print("VERIFY EMAIL PRESSED");
-
                         BlocProvider.of<AuthBloc>(context).add(
                           ResetPasswordEvent(
                             email: emailController.text,

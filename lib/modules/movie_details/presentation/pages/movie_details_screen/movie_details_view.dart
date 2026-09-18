@@ -30,7 +30,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.Dark,
+      backgroundColor: AppColor.dark,
       body: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
         builder: (context, state) {
           if (state is MovieDetailsLoading) {
@@ -45,9 +45,6 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
               ),
             );
           } else if (state is MovieDetailsSuccess) {
-
-            print("--- Similar Movies Count from State: ${state.similarMovies.length} ---");
-
             return SingleChildScrollView(
               child: Column(
                 children: [

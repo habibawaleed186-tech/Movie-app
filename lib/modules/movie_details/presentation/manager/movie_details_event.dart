@@ -13,7 +13,7 @@ class GetMovieDetailsEvent  extends MovieDetailsEvent{
 }
 class GetMovieSuggestionsEvent extends MovieDetailsEvent {
   final int movieId;
-  GetMovieSuggestionsEvent(this.movieId);
+  const GetMovieSuggestionsEvent(this.movieId);
 
   @override
   // TODO: implement props

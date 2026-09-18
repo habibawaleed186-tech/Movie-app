@@ -3,17 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
-
 import 'package:movie_app/modules/layout/home/domain/entity/movie_entity.dart';
-class Similar extends StatelessWidget {
 
+class Similar extends StatelessWidget {
   final List<MovieEntity> movies;
 
   const Similar({super.key, required this.movies});
 
   @override
   Widget build(BuildContext context) {
-    print("Similar movies count: ${movies.length}");
     if (movies.isEmpty) {
       return const SizedBox.shrink();
     }
@@ -47,7 +45,7 @@ class Similar extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     final movieId = movie.id;
-                    if (movieId is! int) return;
+                    if (movieId == null) return;
 
                     Navigator.pushNamed(
                       context,

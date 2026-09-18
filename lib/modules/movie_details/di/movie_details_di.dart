@@ -2,7 +2,6 @@ import 'package:movie_app/modules/movie_details/data/data_source/remote_movie_de
 import 'package:movie_app/modules/movie_details/data/repository_imp/movie_details_imp.dart';
 import 'package:movie_app/modules/movie_details/domain/use_case/movie_details_use_case.dart';
 
-import '../../../core/Network/api_interface.dart';
 import '../../../core/Network/dio_api_client.dart';
 import '../../../core/di/app_di.dart';
 import '../data/data_source/movie_similar_data_source_interface.dart';
