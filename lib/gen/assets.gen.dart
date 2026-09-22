@@ -14,6 +14,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Empty 1.svg
+  String get empty1 => 'assets/icons/Empty 1.svg';
+
   /// File path: assets/icons/Language Switch.svg
   String get languageSwitch => 'assets/icons/Language Switch.svg';
 
@@ -58,6 +61,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<dynamic> get values => [
+    empty1,
     languageSwitch,
     profile,
     arrow,
@@ -87,6 +91,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/Available Now.png
   AssetGenImage get availableNow =>
       const AssetGenImage('assets/images/Available Now.png');
+
+  /// File path: assets/images/Empty 1.png
+  AssetGenImage get empty1 => const AssetGenImage('assets/images/Empty 1.png');
 
   /// File path: assets/images/Forgot password.png
   AssetGenImage get forgotPassword =>
@@ -246,6 +253,7 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
     a97ab5fb2e4e76c640b21b6db578a86b1e22877ec,
     availableNow,
+    empty1,
     forgotPassword,
     moviesPosters,
     cast1,

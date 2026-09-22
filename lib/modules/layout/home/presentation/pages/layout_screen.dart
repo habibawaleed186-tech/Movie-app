@@ -3,6 +3,8 @@ import 'package:movie_app/core/assets/app_assets.dart';
 import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/modules/layout/home/presentation/pages/home_screen_layout.dart';
 
+import '../../../profile/presentation/pages/profile_view.dart';
+
 class LayoutScreen extends StatefulWidget {
   static const String routeName = '/layout';
 
@@ -15,11 +17,11 @@ class LayoutScreen extends StatefulWidget {
 class _LayoutScreenState extends State<LayoutScreen> {
   int selectedIndex = 0;
 
-  final List<Widget> _screens = const <Widget>[
-    HomeScreenLayout(),
-    Center(child: Text('Browse Screen')),
-    Center(child: Text('Search Screen')),
-    Center(child: Text('Profile Screen')),
+  final List<Widget> _screens = <Widget>[
+    const HomeScreenLayout(),
+    const Center(child: Text('Browse Screen')),
+    const Center(child: Text('Search Screen')),
+        ProfileView(),
   ];
 
   @override
