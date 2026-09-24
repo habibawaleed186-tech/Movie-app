@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:movie_app/modules/layout/home/domain/entity/movie_entity.dart';
 
 import '../../../../../../core/assets/app_assets.dart';
 import '../../../../../../core/config/app_color.dart';
+import '../../../../../layout/profile/data/model/profile_model.dart';
+import '../../../../../layout/profile/presentation/manager/profile_bloc.dart';
 
 class MovieHeader extends StatelessWidget {
   final MovieEntity movie;
@@ -78,14 +82,45 @@ class MovieHeader extends StatelessWidget {
           Positioned(
             top: 20.h,
             right: 16.w,
-            child: IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                AppAssets.bookmark,
-                colorFilter: ColorFilter.mode(AppColor.white, BlendMode.srcIn),
-              ),
-            ),
-          ),
+            child: BlocBuilder<ProfileBloc, ProfileState>(
+              builder: (context, state) {
+                bool isFavorite = false;
+
+                if (state is ProfileLoaded) {
+                  isFavorite = state.isFavorite;
+                }
+
+                return IconButton(
+                  onPressed: () {
+                    if (movie.id == null) return;
+
+                    final profileMovie = ProfileModel(
+                      id: movie.id,
+                      rating: movie.rating,
+                      coverImage: movie.coverImage,
+                      backgroundImage: movie.backgroundImage,
+                    );
+
+                    if (isFavorite) {
+                      context.read<ProfileBloc>().add(
+                        RemoveFavoriteEvent(movie.id!),
+                      );
+                    } else {
+                      context.read<ProfileBloc>().add(
+                        AddFavoriteEvent(profileMovie),
+                      );
+                    }
+                  },
+                  icon: SvgPicture.asset(
+                    AppAssets.bookmark,
+                    colorFilter: ColorFilter.mode(
+                      isFavorite ? AppColor.yellow : AppColor.white,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                );
+              },
+            )),
           Padding(
             padding: EdgeInsets.only(bottom: 20.h),
             child: Column(

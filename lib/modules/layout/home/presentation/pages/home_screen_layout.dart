@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get_it/get_it.dart';
 import 'package:movie_app/core/assets/app_assets.dart';
 import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/modules/layout/home/data/datasource/movie_remote_data_source.dart';
@@ -12,6 +13,9 @@ import 'package:movie_app/modules/layout/home/presentation/manger/home_cubit.dar
 import 'package:movie_app/modules/layout/home/presentation/manger/home_state.dart';
 import 'package:movie_app/modules/layout/home/presentation/pages/widgets/background.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
+
+import '../../../profile/data/model/profile_model.dart';
+import '../../../profile/presentation/manager/profile_bloc.dart';
 
 class HomeScreenLayout extends StatefulWidget {
   const HomeScreenLayout({super.key});
@@ -222,6 +226,17 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                           final movieId = movie.id;
                                           if (movieId == null) return;
 
+                                          final profileMovie = ProfileModel(
+                                            id: movie.id,
+                                            rating: movie.rating,
+                                            coverImage: movie.coverImage,
+                                            backgroundImage: movie.backgroundImage,
+                                          );
+
+                                          GetIt.I<ProfileBloc>().add(
+                                            AddHistoryEvent(profileMovie),
+                                          );
+
                                           Navigator.pushNamed(
                                             context,
                                             AppRoutes.movieDetails,
@@ -413,6 +428,17 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                             onTap: () {
                               final movieId = movie.id;
                               if (movieId == null) return;
+
+                              final profileMovie = ProfileModel(
+                                id: movie.id,
+                                rating: movie.rating,
+                                coverImage: movie.coverImage,
+                                backgroundImage: movie.backgroundImage,
+                              );
+
+                              GetIt.I<ProfileBloc>().add(
+                                AddHistoryEvent(profileMovie),
+                              );
 
                               Navigator.pushNamed(
                                 context,

@@ -1,50 +1,89 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../core/utiles/avatar_data.dart';
+import '../../../../../Home_screen/update_view/presentation/manager/update_profile_bloc.dart';
+import '../../manager/profile_bloc.dart';
 class Profileheader extends StatelessWidget {
-  Profileheader({super.key});
+  const Profileheader({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      color: const Color(0xFF282A28),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+    return BlocBuilder<UpdateProfileBloc, UpdateProfileState>(
+      builder: (context, updateState) {
+        String name = '';
+        int avatarIndex = 0;
 
-          Row(
-            children: [
-              const CircleAvatar(
-                backgroundImage: AssetImage("assets/images/gamer (1)(8).png"),
-                radius: 50,
-              ),
-              const SizedBox(width: 30),
-              Row(
+        if (updateState is GetProfileSuccess) {
+          name = updateState.data.name;
+          avatarIndex = updateState.data.avatarIndex;
+        }
+
+        return BlocBuilder<ProfileBloc, ProfileState>(
+          builder: (context, profileState) {
+            int favouriteCount = 0;
+            int historyCount = 0;
+
+            if (profileState is ProfileLoaded) {
+              favouriteCount = profileState.favorites.length;
+              historyCount = profileState.histories.length;
+            }
+
+            return Container(
+              padding: const EdgeInsets.all(16),
+              color: const Color(0xFF282A28),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildStatColumn('12', 'Wish List'),
-                  const SizedBox(width: 40),
-                  _buildStatColumn('10', 'History'),
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 50,
+                        child: AvatarData.images[avatarIndex].image(),
+                      ),
+
+                      const SizedBox(width: 30),
+
+                      Row(
+                        children: [
+                          _buildStatColumn(
+                            '$favouriteCount',
+                            'Wish List',
+                          ),
+
+                          const SizedBox(width: 40),
+
+                          _buildStatColumn(
+                            '$historyCount',
+                            'History',
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  Text(
+                    name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 17,
+                      color: Colors.white,
+                    ),
+                  ),
                 ],
               ),
-            ],
-          ),
-          const SizedBox(height: 12),
-
-          const Text(
-            'John Safwat',
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 17,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
+            );
+          },
+        );
+      },
     );
   }
 
-  Widget _buildStatColumn(String count, String label) {
+  Widget _buildStatColumn(
+      String count,
+      String label,
+      ) {
     return Column(
       children: [
         Text(
@@ -55,7 +94,9 @@ class Profileheader extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+
         const SizedBox(height: 4),
+
         Text(
           label,
           style: const TextStyle(

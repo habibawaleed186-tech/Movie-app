@@ -8,4 +8,6 @@ abstract class AppRoutes {
   static const String registerView='/register';
   static const String updateProfile='/update';
   static const String movieDetails = '/movieDetails';
+
+
 }

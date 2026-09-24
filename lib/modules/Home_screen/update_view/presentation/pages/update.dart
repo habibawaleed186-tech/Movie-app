@@ -73,8 +73,7 @@ class _UpdateState extends State<Update> {
             BotToastService.showSuccessMessage(
               'Profile updated successfully',
             );
-
-            Navigator.pushReplacementNamed(context, AppRoutes.layout);
+            Navigator.pop(context, true);
           }
 
           if (state is UpdateProfileError) {
@@ -113,7 +112,9 @@ class _UpdateState extends State<Update> {
         leading: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: GestureDetector(
-            onTap:(){},
+            onTap:(){
+              Navigator.pop(context);
+            },
               child: SvgPicture.asset(Assets.icons.arrowBack,)),
         ),
         title: Text("Pick Avatar",style: TextStyle(
@@ -222,7 +223,6 @@ class _UpdateState extends State<Update> {
                                     const DeleteAccountEvent(),
                                   );
                                 },
-
                                 child: const Text(
                                   'Delete',
                                 ),
