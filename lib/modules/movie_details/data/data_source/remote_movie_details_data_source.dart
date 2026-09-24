@@ -1,4 +1,4 @@
-import 'package:dio/src/response.dart';
+import 'package:dio/dio.dart';
 import 'package:movie_app/core/Network/api_interface.dart';
 import 'package:movie_app/core/Network/end_points.dart';
 import 'package:movie_app/modules/movie_details/data/data_source/movie_details_data_source_interface.dart';

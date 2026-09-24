@@ -93,7 +93,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
         builder: (context, state) {
           if (state is HomeLoading || state is HomeInitial) {
             return const Scaffold(
-              backgroundColor: AppColor.Dark,
+              backgroundColor: AppColor.dark,
               body: Center(
                 child: CircularProgressIndicator(
                   color: Colors.amber,
@@ -104,7 +104,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
 
           if (state is HomeError) {
             return Scaffold(
-              backgroundColor: AppColor.Dark,
+              backgroundColor: AppColor.dark,
               body: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(20),
@@ -142,7 +142,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
 
           if (movies.isEmpty) {
             return const Scaffold(
-              backgroundColor: AppColor.Dark,
+              backgroundColor: AppColor.dark,
               body: Center(
                 child: Text(
                   'No movies available',
@@ -179,9 +179,9 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
               : activeMovie.backgroundImage;
 
           return Scaffold(
-            backgroundColor: AppColor.Dark,
+            backgroundColor: AppColor.dark,
             body: Container(
-              color: AppColor.Dark,
+              color: AppColor.dark,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -396,18 +396,25 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                           ),
                           const Spacer(),
                           TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'See More',
-                              style: TextStyle(
-                                color: AppColor.yellow,
-                              ),
+                            onPressed: () =>
+                                Navigator.pushNamed(context, AppRoutes.browse),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'See More',
+                                  style: TextStyle(
+                                    color: AppColor.yellow,
+                                  ),
+                                ),
+                                const SizedBox(width: 4),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 14,
+                                  color: AppColor.yellow,
+                                ),
+                              ],
                             ),
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            size: 14,
-                            color: AppColor.yellow,
                           ),
                         ],
                       ),

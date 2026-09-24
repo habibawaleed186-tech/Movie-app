@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
-import 'package:movie_app/modules/Home_screen/update_view/presentation/manager/update_profile_bloc.dart';
 import 'package:movie_app/modules/layout/home/domain/entity/movie_entity.dart';
 
 import '../../../../core/Network/api_results.dart';
@@ -22,7 +21,6 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
       GetMovieDetailsEvent event,
       Emitter<MovieDetailsState> emit,
       ) async {
-    print("========== 1. START LOADING MOVIE DETAILS ==========");
     emit(MovieDetailsLoading());
 
 
@@ -30,15 +28,11 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
 
     switch (result) {
       case SuccessRequest(data: final movie):
-        print("========== 2. MOVIE DETAILS SUCCESS LOADED ==========");
-
-
         final similarResult = await GetIt.I<MovieSimilarUseCase>().call(event.movieId);
         List<MovieEntity> similarMovies = [];
 
         if (similarResult is SuccessRequest<List<MovieEntity>>) {
           similarMovies = similarResult.data;
-          print("========== SIMILAR MOVIES LOADED: ${similarMovies.length} ==========");
         }
 
 
@@ -50,7 +44,6 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
         );
 
       case FailureRequest(exception: final exception):
-        print("========== MOVIE DETAILS ERROR: ${exception.message} ==========");
         emit(
           MovieDetailsError(
             exception.message ?? "Something went wrong",

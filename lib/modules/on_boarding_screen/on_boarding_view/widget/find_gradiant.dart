@@ -14,7 +14,7 @@ class FindGradiant extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color: AppColor.Dark,
+          color: AppColor.dark,
         ),
         Image.asset(
           AppAssets.moviesPoster,
@@ -28,7 +28,7 @@ class FindGradiant extends StatelessWidget {
           right: 0,
           child: Container(
             padding: EdgeInsets.all(20.r),
-            decoration: BoxDecoration(color: AppColor.Dark),
+            decoration: BoxDecoration(color: AppColor.dark),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,7 +77,7 @@ class FindGradiant extends StatelessWidget {
                       child: Text(
                         "Explore Now",
                         style: TextStyle(
-                          color: AppColor.Dark,
+                          color: AppColor.dark,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                         ),

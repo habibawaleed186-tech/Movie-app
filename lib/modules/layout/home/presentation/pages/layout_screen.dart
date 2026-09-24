@@ -1,6 +1,11 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/assets/app_assets.dart';
 import 'package:movie_app/core/config/app_color.dart';
+import 'package:movie_app/core/di/app_di.dart';
+import 'package:movie_app/modules/layout/browse/domain/use_cases/get_movies_by_genre_use_case.dart';
+import 'package:movie_app/modules/layout/browse/presentation/cubit/browse_cubit.dart';
+import 'package:movie_app/modules/layout/browse/presentation/pages/browse_screen.dart';
 import 'package:movie_app/modules/layout/home/presentation/pages/home_screen_layout.dart';
 
 import '../../../profile/presentation/pages/profile_view.dart';
@@ -19,15 +24,20 @@ class _LayoutScreenState extends State<LayoutScreen> {
 
   final List<Widget> _screens = <Widget>[
     const HomeScreenLayout(),
-    const Center(child: Text('Browse Screen')),
+    BlocProvider<BrowseCubit>(
+      create: (context) => BrowseCubit(
+        getMoviesByGenreUseCase: getIt<GetMoviesByGenreUseCase>(),
+      ),
+      child: const BrowseScreen(showBackButton: false),
+    ),
     const Center(child: Text('Search Screen')),
-        ProfileView(),
+    const Center(child: Text('Profile Screen')),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColor.Dark,
+        backgroundColor: AppColor.dark,
       body: _screens[selectedIndex],
       bottomNavigationBar: SafeArea(
         child: Padding(

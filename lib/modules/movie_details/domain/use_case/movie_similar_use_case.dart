@@ -8,7 +8,7 @@ class MovieSimilarUseCase {
   MovieSimilarRepository repository;
   MovieSimilarUseCase(this.repository);
 
-  Future<ApiResults<List<MovieEntity>>> call (movieId) async {
+  Future<ApiResults<List<MovieEntity>>> call(int movieId) async {
     return await repository.getMovieSuggestions(movieId);
   }
 

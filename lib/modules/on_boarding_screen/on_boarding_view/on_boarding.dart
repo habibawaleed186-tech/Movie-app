@@ -9,7 +9,7 @@ import 'package:movie_app/modules/on_boarding_screen/on_boarding_view/widget/sta
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoarding extends StatefulWidget {
-  OnBoarding({super.key});
+  const OnBoarding({super.key});
 
   @override
   State<OnBoarding> createState() => _OnBoardingState();
@@ -24,7 +24,6 @@ class _OnBoardingState extends State<OnBoarding> {
   }
 
   final PageController _pageController = PageController();
-  int _currentindex = 0;
 
   @override
   void dispose() {
@@ -36,14 +35,9 @@ class _OnBoardingState extends State<OnBoarding> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.Dark,
+        backgroundColor: AppColor.dark,
         body: PageView(
           controller: _pageController,
-          onPageChanged: (index) {
-            setState(() {
-              _currentindex = index;
-            });
-          },
           children: [
             FindGradiant(pageController: _pageController),
             DiscoverGradiant(pageController: _pageController),
