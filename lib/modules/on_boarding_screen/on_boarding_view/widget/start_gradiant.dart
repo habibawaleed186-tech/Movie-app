@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/assets/app_assets.dart';
 import '../../../../core/config/app_color.dart';
-import '../../../Auth_screen/presentation/pages/login.dart';
+import '../../../auth_screen/presentation/pages/login.dart';
 
 
 class StartGradiant extends StatelessWidget {
@@ -16,7 +17,7 @@ class StartGradiant extends StatelessWidget {
     return Stack(
       children: [
     Container(
-      color: AppColor.Dark,
+      color: AppColor.dark,
     ),
         Image.asset(
           AppAssets.start,
@@ -46,7 +47,7 @@ class StartGradiant extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(20.r),
             decoration: BoxDecoration(
-              color: AppColor.Dark,
+              color: AppColor.dark,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40.r),
                 topRight: Radius.circular(40.r),
@@ -69,11 +70,15 @@ class StartGradiant extends StatelessWidget {
                   width: double.infinity,
                   height: 50.h,
                   child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => Login(),
-                        ),(route) => false,
+                    onTap: () async {
+                      final navigator = Navigator.of(context);
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.setBool('isOnBoardingShown', true);
+                      navigator.pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => Login(),
+                        ),
+                        (route) => false,
                       );
                     },
                     child: Container(
@@ -89,7 +94,7 @@ class StartGradiant extends StatelessWidget {
                       child: Text(
                         "Finish",
                         style: TextStyle(
-                          color: AppColor.Dark,
+                          color: AppColor.dark,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                         ),
@@ -115,7 +120,7 @@ class StartGradiant extends StatelessWidget {
                         vertical: 12.h,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColor.Dark,
+                        color: AppColor.dark,
                         borderRadius: BorderRadius.circular(15.r),
                         border: Border.all(
                           color: AppColor.yellow,

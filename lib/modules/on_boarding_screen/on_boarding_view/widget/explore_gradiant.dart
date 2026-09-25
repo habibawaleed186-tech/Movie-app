@@ -14,7 +14,7 @@ class ExploreGradiant extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color: AppColor.Dark,
+          color: AppColor.dark,
         ),
         Image.asset(
           AppAssets.explore,
@@ -44,7 +44,7 @@ class ExploreGradiant extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(20.r),
             decoration: BoxDecoration(
-              color: AppColor.Dark,
+              color: AppColor.dark,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40.r),
                 topRight: Radius.circular(40.r),
@@ -98,7 +98,7 @@ class ExploreGradiant extends StatelessWidget {
                       child: Text(
                         "Next",
                         style: TextStyle(
-                          color: AppColor.Dark,
+                          color: AppColor.dark,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                         ),
@@ -124,7 +124,7 @@ class ExploreGradiant extends StatelessWidget {
                         vertical: 12.h,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColor.Dark,
+                        color: AppColor.dark,
                         borderRadius: BorderRadius.circular(15.r),
                         border: Border.all(
                           color: AppColor.yellow,

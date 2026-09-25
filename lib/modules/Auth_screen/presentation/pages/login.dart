@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
-import 'package:movie_app/modules/Auth_screen/presentation/manager/auth_state.dart';
-import '../manager/auth_bloc.dart';
-import '../manager/auth_event.dart';
-import '../widgets/custonWidget.dart';
-import '../widgets/textFormField.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_bloc.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_event.dart';
+import 'package:movie_app/modules/auth_screen/presentation/manager/auth_state.dart';
+
+import '../widgets/custon_widget.dart';
+import '../widgets/text_form_field.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -33,12 +34,12 @@ class _LoginScreenState extends State<Login> {
       backgroundColor: const Color(0xFF121312),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is AuthSuccess)
-            {
-              Navigator.pushReplacementNamed(context, AppRoutes.updateProfile);
-            }
-          else if (state is AuthError){
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage)),);
+          if (state is AuthSuccess) {
+            Navigator.pushReplacementNamed(context, AppRoutes.layout);
+          } else if (state is AuthError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.errorMessage)),
+            );
           }
         },
        
@@ -177,7 +178,11 @@ class _LoginScreenState extends State<Login> {
                     ),
          
                     const SizedBox(height: 25),
-                    Customwidget(text: 'Google'),
+                    InkWell(
+                        onTap: (){
+                          BlocProvider.of<AuthBloc>(context).add(SignInWithGoogleEvent());
+                        },
+                        child: Customwidget(text: 'Sign In With Google')),
                     const SizedBox(height: 20),
                     SvgPicture.asset('assets/icons/Language Switch.svg'),
                   ],
