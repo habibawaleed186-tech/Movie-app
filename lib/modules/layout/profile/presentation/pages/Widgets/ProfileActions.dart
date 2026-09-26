@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+
+import '../../../../../../core/routes/app_routes.dart';
+import '../../../../../Home_screen/update_view/presentation/manager/update_profile_bloc.dart';
 
 class Profileactions extends StatelessWidget{
 
@@ -15,8 +19,14 @@ class Profileactions extends StatelessWidget{
           Expanded(
             flex: 2,
             child: InkWell(
-              onTap: (){
-                Navigator.pushNamed(context, '/update');
+              onTap: () async {
+                final result = await Navigator.pushNamed(context, AppRoutes.updateProfile,);
+
+                if (result == true) {
+                  GetIt.I<UpdateProfileBloc>().add(
+                    const GetProfileEvent(),
+                  );
+                }
               },
               child: Container(
                 height: 55,
@@ -47,8 +57,13 @@ class Profileactions extends StatelessWidget{
             child: Row(
              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                 Text('Exit',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.white),
-                  ),
+
+
+                 GestureDetector(
+                   onTap: ()=>Navigator.pushReplacementNamed(context, AppRoutes.loginView),
+                   child: Text('Exit',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.white),
+                    ),
+                 ),
 
                 SizedBox(width: 2,),
                 Icon(Icons.exit_to_app,color: Colors.white,size: 20,)

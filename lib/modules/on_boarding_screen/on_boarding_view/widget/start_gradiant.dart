@@ -17,7 +17,7 @@ class StartGradiant extends StatelessWidget {
     return Stack(
       children: [
     Container(
-      color: AppColor.Dark,
+      color: AppColor.dark,
     ),
         Image.asset(
           AppAssets.start,
@@ -47,7 +47,7 @@ class StartGradiant extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(20.r),
             decoration: BoxDecoration(
-              color: AppColor.Dark,
+              color: AppColor.dark,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40.r),
                 topRight: Radius.circular(40.r),
@@ -71,12 +71,14 @@ class StartGradiant extends StatelessWidget {
                   height: 50.h,
                   child: GestureDetector(
                     onTap: () async {
+                      final navigator = Navigator.of(context);
                       final prefs = await SharedPreferences.getInstance();
                       await prefs.setBool('isOnBoardingShown', true);
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => Login(),
-                        ),(route) => false,
+                      navigator.pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => Login(),
+                        ),
+                        (route) => false,
                       );
                     },
                     child: Container(
@@ -92,7 +94,7 @@ class StartGradiant extends StatelessWidget {
                       child: Text(
                         "Finish",
                         style: TextStyle(
-                          color: AppColor.Dark,
+                          color: AppColor.dark,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                         ),
@@ -118,7 +120,7 @@ class StartGradiant extends StatelessWidget {
                         vertical: 12.h,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColor.Dark,
+                        color: AppColor.dark,
                         borderRadius: BorderRadius.circular(15.r),
                         border: Border.all(
                           color: AppColor.yellow,

@@ -6,8 +6,8 @@ import 'package:movie_app/modules/auth_screen/presentation/manager/auth_bloc.dar
 import 'package:movie_app/modules/auth_screen/presentation/manager/auth_event.dart';
 import 'package:movie_app/modules/auth_screen/presentation/manager/auth_state.dart';
 
-import '../widgets/custonWidget.dart';
-import '../widgets/textFormField.dart';
+import '../widgets/custon_widget.dart';
+import '../widgets/text_form_field.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

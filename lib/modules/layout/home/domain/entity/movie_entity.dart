@@ -9,6 +9,7 @@ class MovieEntity {
   final String summary;
   final String coverImage;
   final String backgroundImage;
+  final String url;
   final List<String> screenshots;
   final List<CastEntity> cast;
 
@@ -23,6 +24,7 @@ class MovieEntity {
     this.summary = '',
     this.coverImage = '',
     this.backgroundImage = '',
+    this.url = '',
     this.screenshots = const [],
     this.cast = const [],
   });

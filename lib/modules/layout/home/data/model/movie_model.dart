@@ -12,6 +12,7 @@ class MovieModel extends MovieEntity {
     super.summary,
     super.coverImage,
     super.backgroundImage,
+    super.url,
     super.screenshots,
     super.cast,
   });
@@ -44,6 +45,7 @@ class MovieModel extends MovieEntity {
         map['large_cover_image']?.toString() ??
         '';
     final backgroundImage = map['background_image']?.toString() ?? '';
+    final url = map['url']?.toString() ?? '';
 
     final screenshots = <String>[];
     if (map['large_screenshot_image1'] != null) screenshots.add(map['large_screenshot_image1']);
@@ -74,6 +76,7 @@ class MovieModel extends MovieEntity {
       summary: summary,
       coverImage: coverImage,
       backgroundImage: backgroundImage,
+      url: url,
       screenshots: screenshots,
       cast: castList,
     );

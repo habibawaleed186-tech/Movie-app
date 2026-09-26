@@ -39,7 +39,7 @@ class Customwidget extends StatelessWidget {
               ),
             ),
             if (icon != null) const SizedBox(width: 8),
-            if (icon != null) icon!,
+            ?icon,
           ],
         ),
       ),

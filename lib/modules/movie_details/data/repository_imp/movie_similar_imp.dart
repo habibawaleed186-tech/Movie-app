@@ -9,7 +9,7 @@ import '../data_source/movie_similar_data_source_interface.dart';
 
 class MovieSimilarImp implements MovieSimilarRepository{
 
-  MovieSimilarDataSourceInterface _movieSimilarDataSourceInterface;
+  final MovieSimilarDataSourceInterface _movieSimilarDataSourceInterface;
   MovieSimilarImp(this._movieSimilarDataSourceInterface);
 
 

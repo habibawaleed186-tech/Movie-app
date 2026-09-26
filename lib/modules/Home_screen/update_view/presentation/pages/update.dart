@@ -5,17 +5,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:movie_app/modules/Home_screen/update_view/presentation/pages/widgets/bottom_sheet.dart';
-import '../../../../../core/services/Snackbar_service.dart';
+import '../../../../../core/services/snackbar_service.dart';
 import '../../../../../core/utiles/avatar_data.dart';
 import '../../../../../gen/assets.gen.dart';
-import '../../../../auth_screen/presentation/widgets/custonWidget.dart';
-import '../../../../auth_screen/presentation/widgets/textFormField.dart';
+import '../../../../auth_screen/presentation/widgets/custon_widget.dart';
+import '../../../../auth_screen/presentation/widgets/text_form_field.dart';
 import '../../domain/entities/update_profile_entity.dart';
 import '../manager/update_profile_bloc.dart';
 
 
 class Update extends StatefulWidget {
-  Update({super.key});
+  const Update({super.key});
 
   @override
   State<Update> createState() => _UpdateState();
@@ -73,8 +73,7 @@ class _UpdateState extends State<Update> {
             BotToastService.showSuccessMessage(
               'Profile updated successfully',
             );
-
-            Navigator.pushReplacementNamed(context, AppRoutes.layout);
+            Navigator.pop(context, true);
           }
 
           if (state is UpdateProfileError) {
@@ -106,14 +105,16 @@ class _UpdateState extends State<Update> {
 
 
     child:  Scaffold(
-      backgroundColor: AppColor.Dark,
+      backgroundColor: AppColor.dark,
       appBar: AppBar(
 
-        backgroundColor: AppColor.Dark,
+        backgroundColor: AppColor.dark,
         leading: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: GestureDetector(
-            onTap:(){},
+            onTap:(){
+              Navigator.pop(context);
+            },
               child: SvgPicture.asset(Assets.icons.arrowBack,)),
         ),
         title: Text("Pick Avatar",style: TextStyle(
@@ -222,7 +223,6 @@ class _UpdateState extends State<Update> {
                                     const DeleteAccountEvent(),
                                   );
                                 },
-
                                 child: const Text(
                                   'Delete',
                                 ),

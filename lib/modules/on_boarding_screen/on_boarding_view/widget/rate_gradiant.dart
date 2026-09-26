@@ -14,7 +14,7 @@ class RateGradiant extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color: AppColor.Dark,
+          color: AppColor.dark,
         ),
         Image.asset(
           AppAssets.rate,
@@ -44,7 +44,7 @@ class RateGradiant extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(20.r),
             decoration: BoxDecoration(
-              color: AppColor.Dark,
+              color: AppColor.dark,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40.r),
                 topRight: Radius.circular(40.r),
@@ -99,7 +99,7 @@ class RateGradiant extends StatelessWidget {
                       child: Text(
                         "Next",
                         style: TextStyle(
-                          color: AppColor.Dark,
+                          color: AppColor.dark,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                         ),
@@ -125,7 +125,7 @@ class RateGradiant extends StatelessWidget {
                         vertical: 12.h,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColor.Dark,
+                        color: AppColor.dark,
                         borderRadius: BorderRadius.circular(15.r),
                         border: Border.all(
                           color: AppColor.yellow,

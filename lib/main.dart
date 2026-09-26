@@ -9,7 +9,6 @@ import 'package:movie_app/core/routes/app_router.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'modules/auth_screen/data/data_source/auth_data_source_interface.dart';
 import 'modules/auth_screen/data/data_source/remote_auth_data_source.dart';
 import 'modules/auth_screen/data/repositories_imp/auth_repositories_imp.dart';
 import 'modules/auth_screen/domain/use_cases/login_use_case.dart';
@@ -58,7 +57,7 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
-            initialRoute: AppRoutes.Splach,
+            initialRoute: AppRoutes.splash,
             onGenerateRoute: AppRouter.onGenerateRoute,
             builder: EasyLoading.init(
               builder: BotToastInit(),

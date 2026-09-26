@@ -6,10 +6,12 @@ import 'package:movie_app/modules/movie_details/presentation/pages/movie_details
 import 'package:movie_app/modules/movie_details/presentation/pages/movie_details_screen/widgets/screen_shots.dart';
 import 'package:movie_app/modules/movie_details/presentation/pages/movie_details_screen/widgets/similar.dart';
 import 'package:movie_app/modules/movie_details/presentation/pages/movie_details_screen/widgets/summary.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/config/app_color.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../layout/profile/presentation/manager/profile_bloc.dart';
 import '../../manager/movie_details_bloc.dart';
 
 class MovieDetailsView extends StatefulWidget {
@@ -24,13 +26,22 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
   @override
   void initState() {
     super.initState();
-    context.read<MovieDetailsBloc>().add(GetMovieDetailsEvent(movieId: widget.movieId));
+
+    context.read<MovieDetailsBloc>().add(
+      GetMovieDetailsEvent(
+        movieId: widget.movieId,
+      ),
+    );
+
+    context.read<ProfileBloc>().add(
+      IsFavoriteEvent(widget.movieId),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.Dark,
+      backgroundColor: AppColor.dark,
       body: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
         builder: (context, state) {
           if (state is MovieDetailsLoading) {
@@ -45,9 +56,6 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
               ),
             );
           } else if (state is MovieDetailsSuccess) {
-
-            print("--- Similar Movies Count from State: ${state.similarMovies.length} ---");
-
             return SingleChildScrollView(
               child: Column(
                 children: [
