@@ -1,7 +1,13 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/assets/app_assets.dart';
 import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/modules/layout/home/presentation/pages/home_screen_layout.dart';
+import 'package:movie_app/modules/layout/search/data/data_source/search_remote_data_source.dart';
+import 'package:movie_app/modules/layout/search/data/repository_imp/search_repository_imp.dart';
+import 'package:movie_app/modules/layout/search/domain/use_case/search_movies_use_case.dart';
+import 'package:movie_app/modules/layout/search/presentation/manager/search_bloc.dart';
+import 'package:movie_app/modules/layout/search/presentation/pages/search_view.dart';
 
 import '../../../profile/presentation/pages/profile_view.dart';
 
@@ -20,7 +26,17 @@ class _LayoutScreenState extends State<LayoutScreen> {
   final List<Widget> _screens = <Widget>[
     const HomeScreenLayout(),
     const Center(child: Text('Browse Screen')),
-    const Center(child: Text('Search Screen')),
+    BlocProvider(
+      create: (context) =>
+          SearchBloc(
+            SearchUseCase(
+              SearchRepositoryImp(
+                SearchRemoteDataSource(),
+              ),
+            ),
+          ),
+      child: const SearchView(),
+    ),
         ProfileView(),
   ];
 

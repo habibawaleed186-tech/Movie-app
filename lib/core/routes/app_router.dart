@@ -10,6 +10,7 @@ import '../../modules/Home_screen/update_view/presentation/pages/update.dart';
 import '../../modules/auth_screen/presentation/pages/login.dart';
 import '../../modules/auth_screen/presentation/pages/register.dart';
 import '../../modules/auth_screen/presentation/pages/reset_password.dart';
+import '../../modules/layout/search/presentation/pages/search_view.dart';
 import '../../modules/movie_details/presentation/pages/movie_details_screen/movie_details_view.dart';
 import '../../modules/movie_details/presentation/manager/movie_details_bloc.dart';
 import 'app_routes.dart';
@@ -39,7 +40,10 @@ abstract class AppRouter {
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (context) => ResetPassword());
 
-      case AppRoutes.movieDetails:
+      case AppRoutes.search:
+        return MaterialPageRoute(builder: (context) => const SearchView());
+
+      ccase AppRoutes.movieDetails:
         final arguments = settings.arguments;
         final int movieId = arguments is int
             ? arguments

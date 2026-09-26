@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie_app/core/assets/app_assets.dart';
 import 'package:movie_app/core/config/app_color.dart';
+import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:movie_app/modules/layout/home/data/datasource/movie_remote_data_source.dart';
 import 'package:movie_app/modules/layout/home/data/repository/movie_repository_impl.dart';
 import 'package:movie_app/modules/layout/home/domain/entity/movie_entity.dart';
@@ -11,7 +12,6 @@ import 'package:movie_app/modules/layout/home/domain/usecase/get_movies_use_case
 import 'package:movie_app/modules/layout/home/presentation/manger/home_cubit.dart';
 import 'package:movie_app/modules/layout/home/presentation/manger/home_state.dart';
 import 'package:movie_app/modules/layout/home/presentation/pages/widgets/background.dart';
-import 'package:movie_app/core/routes/app_routes.dart';
 
 class HomeScreenLayout extends StatefulWidget {
   const HomeScreenLayout({super.key});
@@ -195,6 +195,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                             child: Column(
                               children: [
                                 const SizedBox(height: 10),
+
                                 Image.asset(
                                   AppAssets.headerText,
                                   height: 40,

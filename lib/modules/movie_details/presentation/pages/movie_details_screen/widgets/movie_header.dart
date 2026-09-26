@@ -50,7 +50,7 @@ class MovieHeader extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   colors: [
                     AppColor.white.withValues(alpha: 0.1),
-                    AppColor.Dark.withValues(alpha: 0.7),
+                    AppColor.Dark.withValues(alpha: 0.3),
                     AppColor.Dark.withValues(alpha: 1),
                   ],
                 ),
