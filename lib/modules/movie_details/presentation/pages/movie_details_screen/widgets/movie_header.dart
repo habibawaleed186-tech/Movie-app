@@ -55,10 +55,9 @@ class MovieHeader extends StatelessWidget {
                   colors: [
                     AppColor.white.withValues(alpha: 0.1),
                     AppColor.dark.withValues(alpha: 0.7),
+                    AppColor.dark.withValues(alpha: 1),ppColor.dark.withValues(alpha: 0.3),
                     AppColor.dark.withValues(alpha: 1),
-                    AppColor.Dark.withValues(alpha: 0.3),
-                    AppColor.Dark.withValues(alpha: 1),
-                  ],
+                  ]],
                 ),
               ),
             ),

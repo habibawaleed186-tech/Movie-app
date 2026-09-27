@@ -15,7 +15,7 @@ class SearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.Dark,
+      backgroundColor: AppColor.dark,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 25.h),
         child: Column(

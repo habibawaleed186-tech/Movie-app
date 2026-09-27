@@ -7,9 +7,6 @@ import 'package:movie_app/modules/layout/browse/domain/use_cases/get_movies_by_g
 import 'package:movie_app/modules/layout/browse/presentation/cubit/browse_cubit.dart';
 import 'package:movie_app/modules/layout/browse/presentation/pages/browse_screen.dart';
 import 'package:movie_app/modules/layout/home/presentation/pages/home_screen_layout.dart';
-import 'package:movie_app/modules/layout/search/data/data_source/search_remote_data_source.dart';
-import 'package:movie_app/modules/layout/search/data/repository_imp/search_repository_imp.dart';
-import 'package:movie_app/modules/layout/search/domain/use_case/search_movies_use_case.dart';
 import 'package:movie_app/modules/layout/search/presentation/manager/search_bloc.dart';
 import 'package:movie_app/modules/layout/search/presentation/pages/search_view.dart';
 
@@ -29,27 +26,20 @@ class _LayoutScreenState extends State<LayoutScreen> {
 
   final List<Widget> _screens = <Widget>[
     const HomeScreenLayout(),
+
     BlocProvider<BrowseCubit>(
       create: (context) => BrowseCubit(
         getMoviesByGenreUseCase: getIt<GetMoviesByGenreUseCase>(),
       ),
       child: const BrowseScreen(showBackButton: false),
     ),
-    const Center(child: Text('Search Screen')),
-    const Center(child: Text('Profile Screen')),
-    const Center(child: Text('Browse Screen')),
-    BlocProvider(
-      create: (context) =>
-          SearchBloc(
-            SearchUseCase(
-              SearchRepositoryImp(
-                SearchRemoteDataSource(),
-              ),
-            ),
-          ),
+
+    BlocProvider<SearchBloc>(
+      create: (context) => getIt<SearchBloc>(),
       child: const SearchView(),
     ),
-        ProfileView(),
+
+    ProfileView(),
   ];
 
   @override
