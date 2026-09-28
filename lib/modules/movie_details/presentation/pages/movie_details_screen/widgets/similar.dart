@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 
 import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:movie_app/modules/layout/home/domain/entity/movie_entity.dart';
 
+import '../../../../../layout/profile/data/model/profile_model.dart';
+import '../../../../../layout/profile/domain/entities/profile_entity.dart';
+import '../../../../../layout/profile/presentation/manager/profile_bloc.dart';
 class Similar extends StatelessWidget {
   final List<MovieEntity> movies;
 
-  const Similar({super.key, required this.movies});
+  const Similar({
+    super.key,
+    required this.movies,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +46,25 @@ class Similar extends StatelessWidget {
             itemCount: movies.length,
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             itemBuilder: (context, index) {
-              final movie = movies[index];
+              final similarMovie = movies[index];
+
               return Padding(
                 padding: EdgeInsets.only(right: 16.w),
                 child: GestureDetector(
                   onTap: () {
-                    final movieId = movie.id;
+                    final movieId = similarMovie.id;
                     if (movieId == null) return;
+
+                    final profileMovie = ProfileModel(
+                      id: movieId,
+                      rating: similarMovie.rating,
+                      coverImage: similarMovie.coverImage,
+                      backgroundImage: similarMovie.backgroundImage,
+                    );
+
+                    GetIt.I<ProfileBloc>().add(
+                      AddHistoryEvent(profileMovie),
+                    );
 
                     Navigator.pushNamed(
                       context,
@@ -56,8 +75,7 @@ class Similar extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.r),
                     child: Image.network(
-
-                      movie.coverImage,
+                      similarMovie.coverImage,
                       width: 189.w,
                       height: 279.h,
                       fit: BoxFit.cover,

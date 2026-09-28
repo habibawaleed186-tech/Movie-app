@@ -71,10 +71,7 @@ class _ProfileTabsWidgetState extends State<ProfileTabsWidget>
                 controller: _tabController,
                 children: [
 
-                  // =========================
                   // Watch List
-                  // =========================
-
                   BlocBuilder<ProfileBloc, ProfileState>(
                     builder: (context, state) {
                       if (state is ProfileLoaded) {
@@ -108,9 +105,7 @@ class _ProfileTabsWidgetState extends State<ProfileTabsWidget>
                     },
                   ),
 
-                  // =========================
                   // History
-                  // =========================
 
                   BlocBuilder<ProfileBloc, ProfileState>(
                     builder: (context, state) {
