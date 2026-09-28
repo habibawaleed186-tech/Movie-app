@@ -58,7 +58,6 @@ abstract class AppRouter {
           ),
         );
 
-      case AppRoutes.movieDetails:
       case AppRoutes.search:
         return MaterialPageRoute(builder: (context) => const SearchView());
 

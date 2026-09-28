@@ -33,17 +33,17 @@ class MovieHeader extends StatelessWidget {
             height: 645.h,
             width: double.infinity,
             child: _backgroundImage.isNotEmpty &&
-                    _backgroundImage.startsWith('http')
+                _backgroundImage.startsWith('http')
                 ? Image.network(
-                    _backgroundImage,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Image.asset(
-                        AppAssets.doctor,
-                        fit: BoxFit.cover,
-                      );
-                    },
-                  )
+              _backgroundImage,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Image.asset(
+                  AppAssets.doctor,
+                  fit: BoxFit.cover,
+                );
+              },
+            )
                 : Image.asset(AppAssets.doctor, fit: BoxFit.cover),
           ),
           Positioned.fill(
@@ -55,9 +55,8 @@ class MovieHeader extends StatelessWidget {
                   colors: [
                     AppColor.white.withValues(alpha: 0.1),
                     AppColor.dark.withValues(alpha: 0.7),
-                    AppColor.dark.withValues(alpha: 1),ppColor.dark.withValues(alpha: 0.3),
                     AppColor.dark.withValues(alpha: 1),
-                  ]],
+                  ],
                 ),
               ),
             ),
@@ -70,7 +69,7 @@ class MovieHeader extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 20.h,
+            top: 35.h,
             left: 16.w,
             child: IconButton(
               onPressed: () => Navigator.pop(context),
@@ -81,47 +80,47 @@ class MovieHeader extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 20.h,
-            right: 16.w,
-            child: BlocBuilder<ProfileBloc, ProfileState>(
-              builder: (context, state) {
-                bool isFavorite = false;
+              top: 35.h,
+              right: 16.w,
+              child: BlocBuilder<ProfileBloc, ProfileState>(
+                builder: (context, state) {
+                  bool isFavorite = false;
 
-                if (state is ProfileLoaded) {
-                  isFavorite = state.isFavorite;
-                }
+                  if (state is ProfileLoaded) {
+                    isFavorite = state.isFavorite;
+                  }
 
-                return IconButton(
-                  onPressed: () {
-                    if (movie.id == null) return;
+                  return IconButton(
+                    onPressed: () {
+                      if (movie.id == null) return;
 
-                    final profileMovie = ProfileModel(
-                      id: movie.id,
-                      rating: movie.rating,
-                      coverImage: movie.coverImage,
-                      backgroundImage: movie.backgroundImage,
-                    );
-
-                    if (isFavorite) {
-                      context.read<ProfileBloc>().add(
-                        RemoveFavoriteEvent(movie.id!),
+                      final profileMovie = ProfileModel(
+                        id: movie.id,
+                        rating: movie.rating,
+                        coverImage: movie.coverImage,
+                        backgroundImage: movie.backgroundImage,
                       );
-                    } else {
-                      context.read<ProfileBloc>().add(
-                        AddFavoriteEvent(profileMovie),
-                      );
-                    }
-                  },
-                  icon: SvgPicture.asset(
-                    AppAssets.bookmark,
-                    colorFilter: ColorFilter.mode(
-                      isFavorite ? AppColor.yellow : AppColor.white,
-                      BlendMode.srcIn,
+
+                      if (isFavorite) {
+                        context.read<ProfileBloc>().add(
+                          RemoveFavoriteEvent(movie.id!),
+                        );
+                      } else {
+                        context.read<ProfileBloc>().add(
+                          AddFavoriteEvent(profileMovie),
+                        );
+                      }
+                    },
+                    icon: SvgPicture.asset(
+                      AppAssets.bookmark,
+                      colorFilter: ColorFilter.mode(
+                        isFavorite ? AppColor.yellow : AppColor.white,
+                        BlendMode.srcIn,
+                      ),
                     ),
-                  ),
-                );
-              },
-            )),
+                  );
+                },
+              )),
           Padding(
             padding: EdgeInsets.only(bottom: 20.h),
             child: Column(

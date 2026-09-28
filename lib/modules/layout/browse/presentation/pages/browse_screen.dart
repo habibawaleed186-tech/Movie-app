@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:movie_app/core/assets/app_assets.dart';
 import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
 
+import '../../../profile/data/model/profile_model.dart';
+import '../../../profile/presentation/manager/profile_bloc.dart';
 import '../cubit/browse_cubit.dart';
 import '../cubit/browse_state.dart';
 import 'widgets/genre_chip.dart';
@@ -220,6 +223,17 @@ class _BrowseScreenState extends State<BrowseScreen> {
         return MovieCard(
           movie: movie,
           onTap: () {
+            final profileMovie = ProfileModel(
+              id: movie.id,
+              rating: movie.rating,
+              coverImage: movie.posterUrl,
+              backgroundImage: movie.posterUrl,
+            );
+
+            GetIt.I<ProfileBloc>().add(
+              AddHistoryEvent(profileMovie),
+            );
+
             Navigator.pushNamed(
               context,
               AppRoutes.movieDetails,

@@ -50,8 +50,10 @@ return userModel;
 
   @override
   Future<UserModel> signInWithGoogle() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    await googleSignIn.signOut();
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
     if (googleUser == null) {
       throw Exception('Google Sign In was canceled by user');
     }

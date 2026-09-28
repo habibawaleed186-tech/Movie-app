@@ -27,7 +27,6 @@ void main() async {
     );
   }
   AppDi.init();
-  print(getIt.isRegistered<ProfileBloc>());
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {

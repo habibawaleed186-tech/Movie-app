@@ -33,8 +33,7 @@ class _OnBoardingState extends State<OnBoarding> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: AppColor.dark,
         body: PageView(
           controller: _pageController,
@@ -47,7 +46,6 @@ class _OnBoardingState extends State<OnBoarding> {
             StartGradiant(pageController: _pageController),
           ],
         ),
-      ),
-    );
+      );
   }
 }

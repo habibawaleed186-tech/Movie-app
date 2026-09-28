@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../gen/assets.gen.dart';
 
 
@@ -20,12 +18,12 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   Timer? _navigationTimer;
 
+
   @override
   void initState() {
     super.initState();
     _checkNavigation();
   }
-
   Future<void> _checkNavigation() async {
     await Future.delayed(const Duration(seconds: 2));
     final prefs = await SharedPreferences.getInstance();

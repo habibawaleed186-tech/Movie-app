@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-
 import '../../../../Home_screen/update_view/presentation/manager/update_profile_bloc.dart';
 import '../manager/profile_bloc.dart';
 import 'Widgets/ProfileActions.dart';

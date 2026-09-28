@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 import 'package:movie_app/modules/layout/search/presentation/pages/widgets/search_movie_card.dart';
 
 import '../../../../../core/assets/app_assets.dart';
 import '../../../../../core/config/app_color.dart';
+import '../../../../../core/routes/app_routes.dart';
+import '../../../profile/data/model/profile_model.dart';
+import '../../../profile/presentation/manager/profile_bloc.dart';
 import '../manager/search_bloc.dart';
 import '../manager/search_event.dart';
 import '../manager/search_state.dart';
@@ -66,7 +70,18 @@ class SearchView extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final movie = state.movies[index];
 
-                        return SearchMovieCard(movie: movie);
+                        return SearchMovieCard(
+                          movie: movie,
+                          onTap: () {
+                            final profileMovie =
+                            ProfileModel(
+                              id: movie.id,
+                              rating: movie.rating,
+                              coverImage: movie.coverImage,
+                              backgroundImage: movie.coverImage, );
+                            GetIt.I<ProfileBloc>().add( AddHistoryEvent(profileMovie), );
+                            Navigator.pushNamed( context, AppRoutes.movieDetails, arguments: movie.id, );
+                          },);
                       },
                     );
                   }

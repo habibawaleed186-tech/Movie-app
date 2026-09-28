@@ -17,7 +17,7 @@ class GetFavoritesEvent extends ProfileEvent {
 class AddFavoriteEvent extends ProfileEvent {
   final ProfileEntity movie;
 
-  AddFavoriteEvent(this.movie);
+  const AddFavoriteEvent(this.movie);
 
   @override
   List<Object?> get props => [movie];

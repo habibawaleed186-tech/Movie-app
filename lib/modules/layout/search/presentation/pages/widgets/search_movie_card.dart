@@ -6,65 +6,72 @@ import 'package:movie_app/modules/layout/search/domain/entities/movie_entity.dar
 
 class SearchMovieCard extends StatelessWidget {
   final search_entity.MovieEntity movie;
+  final VoidCallback onTap;
 
-  const SearchMovieCard({super.key, required this.movie});
+  const SearchMovieCard({
+    super.key, required this.movie,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16.r),
-      child: Stack(
-        children: [
-          Image.network(
-            movie.coverImage,
-            width: double.infinity,
-            height: 279.h,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) {
-              return Container(
-                width: double.infinity,
-                height: 279.h,
-                color: AppColor.grey,
-                child: const Icon(Icons.broken_image, color: Colors.white),
-              );
-            },
-          ),
-          Positioned(
-            top: 13.h,
-            left: 10.w,
-            child: Container(
-              width: 58.w,
-              height: 28.h,
-              decoration: BoxDecoration(
-                color: AppColor.grey.withValues(alpha: 0.7),
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "${movie.rating}",
-                    style: TextStyle(
-                      color: AppColor.white,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w400,
+    return GestureDetector(
+      onTap: onTap,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16.r),
+        child: Stack(
+          children: [
+            Image.network(
+              movie.coverImage,
+              width: double.infinity,
+              height: 279.h,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  width: double.infinity,
+                  height: 279.h,
+                  color: AppColor.grey,
+                  child: const Icon(Icons.broken_image, color: Colors.white),
+                );
+              },
+            ),
+            Positioned(
+              top: 13.h,
+              left: 10.w,
+              child: Container(
+                width: 58.w,
+                height: 28.h,
+                decoration: BoxDecoration(
+                  color: AppColor.grey.withValues(alpha: 0.7),
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "${movie.rating}",
+                      style: TextStyle(
+                        color: AppColor.white,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 3.w),
-                  SizedBox(
-                    width: 15.w,
-                    height: 15.h,
-                    child: Icon(
-                      Icons.star,
-                      color: AppColor.yellow,
-                      size: 15.sp,
+                    SizedBox(width: 3.w),
+                    SizedBox(
+                      width: 15.w,
+                      height: 15.h,
+                      child: Icon(
+                        Icons.star,
+                        color: AppColor.yellow,
+                        size: 15.sp,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
