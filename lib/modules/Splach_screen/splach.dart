@@ -2,8 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/config/app_color.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
-import 'package:movie_app/modules/on_boarding_screen/on_boarding_view/on_boarding.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../gen/assets.gen.dart';
 
 
@@ -19,14 +18,24 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   Timer? _navigationTimer;
 
+
   @override
   void initState() {
     super.initState();
-    _navigationTimer = Timer(const Duration(seconds: 3), () {
-      if (!mounted) return;
-      Navigator.pushReplacementNamed(context, AppRoutes.onBoarding);
-    });
+    _checkNavigation();
   }
+  Future<void> _checkNavigation() async {
+    await Future.delayed(const Duration(seconds: 2));
+    final prefs = await SharedPreferences.getInstance();
+    bool isOnBoardingShown = prefs.getBool('isOnBoardingShown') ?? false;
+    if (!mounted) return;
+    if (isOnBoardingShown) {
+      Navigator.pushReplacementNamed(context, AppRoutes.loginView);
+    } else {
+      Navigator.pushReplacementNamed(context, AppRoutes.onBoarding);
+    }
+  }
+
 
   @override
   void dispose() {
@@ -37,7 +46,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.Dark,
+      backgroundColor: AppColor.dark,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

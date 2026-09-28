@@ -1,5 +1,5 @@
-import 'package:movie_app/modules/Auth_screen/domain/entities/user_entity.dart';
-import 'package:movie_app/modules/Auth_screen/domain/repositories/auth_repositories.dart';
+import 'package:movie_app/modules/auth_screen/domain/entities/user_entity.dart';
+import 'package:movie_app/modules/auth_screen/domain/repositories/auth_repositories.dart';
 
 class RegisterUseCase {
 

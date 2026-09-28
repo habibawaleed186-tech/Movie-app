@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
+import '../../../../core/utiles/avatar_data.dart';
+
 class Avatar extends StatefulWidget {
   final ValueChanged<int>? onAvatarSelected;
 
@@ -16,23 +18,12 @@ class _AvatarState extends State<Avatar> {
   );
   int selectedIndex = 1;
 
-  final List<String> avatars = [
-    'assets/images/gamer (1).png',
-    'assets/images/gamer (1) (1).png',
-    'assets/images/gamer (1) (2).png',
-    'assets/images/gamer (1) (3).png',
-    'assets/images/gamer (1) (4).png',
-    'assets/images/gamer (1) (5).png',
-    'assets/images/gamer (1) (6).png',
-    'assets/images/gamer (1) (7).png',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 150,
       child: PageView.builder(
-        itemCount: avatars.length,
+        itemCount: AvatarData.images.length,
         controller: _pageController,
         onPageChanged: (index) {
           setState(() {
@@ -54,7 +45,7 @@ class _AvatarState extends State<Avatar> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage(avatars[index]),
+                  image: AvatarData.images[index].provider(),
                   fit: BoxFit.contain,
                 ),
               ),

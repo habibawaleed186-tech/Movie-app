@@ -14,7 +14,7 @@ class DiscoverGradiant extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color: AppColor.Dark,
+          color: AppColor.dark,
         ),
         Image.asset(
           AppAssets.discover,
@@ -44,7 +44,7 @@ class DiscoverGradiant extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(20.r),
             decoration: BoxDecoration(
-              color: AppColor.Dark,
+              color: AppColor.dark,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40.r),
                 topRight: Radius.circular(40.r),
@@ -98,7 +98,7 @@ class DiscoverGradiant extends StatelessWidget {
                       child: Text(
                         "Next",
                         style: TextStyle(
-                          color: AppColor.Dark,
+                          color: AppColor.dark,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                         ),
